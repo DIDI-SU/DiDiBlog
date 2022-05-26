@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import * as React from "react";
@@ -10,8 +11,12 @@ const Header = () => {
           <Link to="/">
             <StaticImage src="../images/header.png" alt="keroppi" />
           </Link>
-          <HeaderLi>Greeting</HeaderLi>
-          <HeaderLi>About</HeaderLi>
+          <Link to="/greeting">
+            <HeaderLi>Greeting</HeaderLi>
+          </Link>
+          <Link to="/about">
+            <HeaderLi>About</HeaderLi>
+          </Link>
           <HeaderLi>Blog</HeaderLi>
         </HeaderUl>
       </HeaderNav>
