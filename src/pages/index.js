@@ -1,11 +1,12 @@
 import * as React from "react";
+import GlobalLayout from "../components/root-wrapper";
 import Main from "./main";
-import Layout from "../styles/GlobalStyles";
+
 const IndexPage = () => {
   return (
-    <Layout>
+    <GlobalLayout>
       <Main />
-    </Layout>
+    </GlobalLayout>
   );
 };
 

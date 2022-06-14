@@ -9,6 +9,10 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {},
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "pages",
