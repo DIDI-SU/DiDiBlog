@@ -1,13 +1,7 @@
 import React from "react";
+import { theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../styles/global-style";
-
-const theme = {
-  Background: "#EAE7C7",
-  MainColor: "#74917F",
-  PointColor: "#0B0D07",
-  TextColor: "#475135",
-};
 
 const GlobalLayout = ({ children }) => {
   return (
