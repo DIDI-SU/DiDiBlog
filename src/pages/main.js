@@ -1,15 +1,19 @@
 import * as React from "react";
+import LogoReact from "../assets/icon/react.svg";
+import LogoHTML from "../assets/icon/html.svg";
+import LogoJS from "../assets/icon/js.svg";
+
 import styled from "styled-components";
 const ICON = [
-  { name: "react", value: "a" },
-  { name: "js", value: "a" },
-  { name: "html5", value: "a" },
+  { name: "react", value: LogoReact },
+  { name: "js", value: LogoJS },
+  { name: "html5", value: LogoHTML },
   { name: "css", value: "a" },
 ];
 const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));
+const ICON_NAME = ["html5", "js", "react"];
 
 const Main = () => {
-  console.log(ICON_MAP);
   return (
     <MainWrapper>
       <title>디디의 블로그</title>
@@ -45,9 +49,11 @@ const Main = () => {
               </MainContentCenterTitle>
             </MainContentTextContainerDiv>
             <MainContentCenterTechContainer>
-              <MainContentTechImg alt="react" src="../images/icon/react.svg" />
-              <MainContentTechImg />
-              <MainContentTechImg />
+              {ICON_NAME.map((title) => {
+                return (
+                  <MainContentTechImg alt={title} src={ICON_MAP.get(title)} />
+                );
+              })}
             </MainContentCenterTechContainer>
           </MainContentMiddle>
           <MainContentBottom>
@@ -125,13 +131,14 @@ const MainContentMiddle = styled.div`
 const MainContentCenterTitle = styled.h2``;
 
 const MainContentCenterTechContainer = styled.div`
-  border: 1px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const MainContentTechImg = styled.img`
-  border-radius: 66px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border: 1px solid yellow;
 `;
 
