@@ -1,9 +1,18 @@
 import * as React from "react";
 import styled from "styled-components";
+const ICON = [
+  { name: "react", value: "a" },
+  { name: "js", value: "a" },
+  { name: "html5", value: "a" },
+  { name: "css", value: "a" },
+];
+const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));
 
 const Main = () => {
+  console.log(ICON_MAP);
   return (
     <MainWrapper>
+      <title>디디의 블로그</title>
       <MainSide>
         <MainSideLinkBox></MainSideLinkBox>
         <MainSideLinkBox></MainSideLinkBox>
@@ -30,13 +39,13 @@ const Main = () => {
             </MainContentTextContainer>
           </MainContentTop>
           <MainContentMiddle>
-            <ainContentTextContainerDiv>
+            <MainContentTextContainerDiv>
               <MainContentCenterTitle>
                 Tech 항목이 들어갈거에요!
               </MainContentCenterTitle>
-            </ainContentTextContainerDiv>
+            </MainContentTextContainerDiv>
             <MainContentCenterTechContainer>
-              <MainContentTechImg />
+              <MainContentTechImg alt="react" src="../images/icon/react.svg" />
               <MainContentTechImg />
               <MainContentTechImg />
             </MainContentCenterTechContainer>
