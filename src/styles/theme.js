@@ -1,14 +1,28 @@
 export const light = {
-  Black: "#222222",
-  Yellow: "#FED402",
   Background: "#FFFF",
-  MainColor: "#74917F",
-  PointColor: "#0B0D07",
-  TextColor: "#475135",
+  FontColor: "#222222",
+  Yellow: "#FED402",
+  Green: {
+    100: "#233116",
+    90: "#354921",
+    80: "#47622C",
+    70: "#597B37",
+    60: "#6B9342",
+    50: "#7CAC4D",
+    40: "#8EB964",
+  },
 };
 
 export const dark = {
-  Background: "#0C1B17",
-  MainColor: "#506844",
-  TextColot: "#EAE7C7",
+  Background: "#FFFF",
+  FontColor: "#222222",
+  Black: {
+    100: "#293045",
+    90: "#353535",
+    80: "#474747",
+    70: "#595859",
+    60: "#6B9342",
+    50: "#52596E",
+    40: "#8F8E8F",
+  },
 };

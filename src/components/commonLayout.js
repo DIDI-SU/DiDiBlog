@@ -30,7 +30,7 @@ const MainWrapper = styled.main`
 const MainSide = styled.aside`
   width: 18%;
   height: 100vh;
-  background-color: ${({ theme }) => theme.MainColor};
+  background-color: ${({ theme }) => theme.Green[70]};
 `;
 const MainSideLinkBox = styled.div``;
 

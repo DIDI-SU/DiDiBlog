@@ -1,5 +1,6 @@
 import * as React from "react";
 import { createGlobalStyle } from "styled-components";
+import { light } from "./theme";
 
 export const GlobalStyles = createGlobalStyle`
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
@@ -9,8 +10,11 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   body {
+
     line-height: 1;
     font-family: 'Spoqa Han Sans Neo';
+    color: ${({ theme }) =>
+      theme === light ? theme.FontColor : theme.Background};
   }
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,

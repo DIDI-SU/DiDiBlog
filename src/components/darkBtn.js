@@ -9,29 +9,23 @@ const ICON = [
 ];
 const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));
 
-const DarkBtn = () => {
-  const [isDark, setIsDark] = useState("light");
-  const handleClick = (e) => {
-    const { id } = e.target;
-    setIsDark(id === "light" ? "dark" : "light");
-  };
-
+const DarkBtn = ({ handleMode, mode }) => {
   return (
     <BtnContainer
-      id={isDark}
+      id={mode}
       onClick={(e) => {
-        handleClick(e);
+        handleMode(e);
       }}
     >
       <BtnImg src={ICON_MAP.get("dark")} />
       <Btn
-        id={isDark}
+        id={mode}
         type="button"
         onClick={(e) => {
-          handleClick(e);
+          handleMode(e);
         }}
       />
-      <BtnImg src={ICON_MAP.get(isDark)} />
+      <BtnImg src={ICON_MAP.get(mode)} />
     </BtnContainer>
   );
 };
@@ -60,7 +54,7 @@ const Btn = styled.button`
   width: 35px;
   border-radius: 50%;
   background-color: ${({ id, theme }) =>
-    id === "light" ? theme.Yellow : theme.Black};
+    id === "light" ? theme.Yellow : theme.Black[100]};
 `;
 
 const BtnImg = styled.img`

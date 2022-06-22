@@ -3,7 +3,6 @@ import LogoReact from "../assets/icon/react.svg";
 import LogoHTML from "../assets/icon/html.svg";
 import LogoJS from "../assets/icon/js.svg";
 import styled from "styled-components";
-import CommonLayout from "../components/commonLayout";
 
 const ICON = [
   { name: "react", value: LogoReact },
@@ -16,42 +15,38 @@ const ICON_NAME = ["html5", "js", "react"];
 
 const Main = () => {
   return (
-    <CommonLayout>
-      <MainCenterSection>
-        <MainContentTop>
-          <MainContentContainer>
-            <MainContentContainerImg alt="이미지 들어갈 예정" />
-          </MainContentContainer>
-          <MainContentTextContainer>
-            <MainContentTextContainerTitle>
-              소개 타이틀이 들어갈 거에요
-            </MainContentTextContainerTitle>
-            <MainContentTextContainerDiv>
-              <MainContentText>간단한 자기소개가 들어갈거에요!</MainContentText>
-            </MainContentTextContainerDiv>
-          </MainContentTextContainer>
-        </MainContentTop>
-        <MainContentMiddle>
-          <MainContentTextContainerDiv>
-            <MainContentCenterTitle>
-              Tech 항목이 들어갈거에요!
-            </MainContentCenterTitle>
-          </MainContentTextContainerDiv>
-          <MainContentCenterTechContainer>
-            {ICON_NAME.map((title) => {
-              return (
-                <MainContentTechImg alt={title} src={ICON_MAP.get(title)} />
-              );
-            })}
-          </MainContentCenterTechContainer>
-        </MainContentMiddle>
-        <MainContentBottom>
+    <MainCenterSection>
+      <MainContentTop>
+        <MainContentContainer>
+          <MainContentContainerImg alt="이미지 들어갈 예정" />
+        </MainContentContainer>
+        <MainContentTextContainer>
           <MainContentTextContainerTitle>
-            프로젝트 내용들이 들어갈거에요
+            소개 타이틀이 들어갈 거에요
           </MainContentTextContainerTitle>
-        </MainContentBottom>
-      </MainCenterSection>
-    </CommonLayout>
+          <MainContentTextContainerDiv>
+            <MainContentText>간단한 자기소개가 들어갈거에요!</MainContentText>
+          </MainContentTextContainerDiv>
+        </MainContentTextContainer>
+      </MainContentTop>
+      <MainContentMiddle>
+        <MainContentTextContainerDiv>
+          <MainContentCenterTitle>
+            Tech 항목이 들어갈거에요!
+          </MainContentCenterTitle>
+        </MainContentTextContainerDiv>
+        <MainContentCenterTechContainer>
+          {ICON_NAME.map((title) => {
+            return <MainContentTechImg alt={title} src={ICON_MAP.get(title)} />;
+          })}
+        </MainContentCenterTechContainer>
+      </MainContentMiddle>
+      <MainContentBottom>
+        <MainContentTextContainerTitle>
+          프로젝트 내용들이 들어갈거에요
+        </MainContentTextContainerTitle>
+      </MainContentBottom>
+    </MainCenterSection>
   );
 };
 
