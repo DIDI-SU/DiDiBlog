@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import DarkBtn from "./darkBtn";
+import Header from "./header";
 import { light, dark } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../styles/global-style";
@@ -12,20 +12,12 @@ const GlobalLayout = ({ children }) => {
     const { id } = e.target;
     setThemeMode(id !== "light" ? "light" : "dark");
   };
-
+  console.log(theme);
   return (
-    <ThemeProvider themeMode={themeMode} theme={theme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <Header handleMode={handleMode} themeMode={themeMode} />
       <MainWrapper>
-        <title>디디의 블로그</title>
-        <MainSide>
-          <DarkBtnDiv>
-            <DarkBtn handleMode={handleMode} mode={themeMode} />
-          </DarkBtnDiv>
-          <MainSideLinkBox></MainSideLinkBox>
-          <MainSideLinkBox></MainSideLinkBox>
-          <MainSideLinkBox></MainSideLinkBox>
-        </MainSide>
         <MainCenter>{children}</MainCenter>
       </MainWrapper>
     </ThemeProvider>
@@ -37,24 +29,8 @@ export default GlobalLayout;
 //전체감싸주는 메인
 const MainWrapper = styled.main`
   display: flex;
-  flex-direction: row-reverse;
-  background-color: ${({ theme }) =>
-    theme === light ? theme.Background[70] : theme.Black[100]};
-`;
-//사이드 네비게이션
-const MainSide = styled.aside`
-  width: 18%;
-  height: 100vh;
-  background-color: ${({ theme }) =>
-    theme === light ? theme.Green[70] : theme.Black[50]};
-`;
-const MainSideLinkBox = styled.div``;
-
-//버튼 네비게이션
-const DarkBtnDiv = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  padding: 20px;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MainTitleWrapper = styled.header`
@@ -66,5 +42,5 @@ const MainTitleWrapper = styled.header`
 const MainTitle = styled.h1``;
 
 const MainCenter = styled.article`
-  margin-right: 130px;
+  min-width: 1200px;
 `;

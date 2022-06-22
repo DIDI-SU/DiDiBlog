@@ -4,23 +4,27 @@ import styled from "styled-components";
 
 const CommonLayout = ({ children }) => {
   return (
-    <MainWrapper>
-      <title>디디의 블로그</title>
-      <MainSide>
-        <DarkBtnDiv>
-          <DarkBtn />
-        </DarkBtnDiv>
-        <MainSideLinkBox></MainSideLinkBox>
-        <MainSideLinkBox></MainSideLinkBox>
-        <MainSideLinkBox></MainSideLinkBox>
-      </MainSide>
-      <MainCenter>{children}</MainCenter>
-    </MainWrapper>
+    <>
+      <MainWrapper>
+        <MainSide>
+          <DarkBtnDiv>
+            <DarkBtn />
+          </DarkBtnDiv>
+          <MainSideLinkBox></MainSideLinkBox>
+          <MainSideLinkBox></MainSideLinkBox>
+          <MainSideLinkBox></MainSideLinkBox>
+        </MainSide>
+        <MainCenter>{children}</MainCenter>
+      </MainWrapper>
+    </>
   );
 };
 
 export default CommonLayout;
-
+const Header = styled.header``;
+const HeaderTitle = styled.p`
+  font-size: 40px;
+`;
 //전체감싸주는 메인
 const MainWrapper = styled.main`
   display: flex;
@@ -47,6 +51,4 @@ const MainTitleWrapper = styled.header`
 `;
 const MainTitle = styled.h1``;
 
-const MainCenter = styled.article`
-  margin-right: 130px;
-`;
+const MainCenter = styled.article``;

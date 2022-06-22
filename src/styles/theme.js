@@ -1,5 +1,6 @@
 export const light = {
   Background: "#FFFF",
+  Black: "#293045",
   FontColor: "#222222",
   Yellow: "#FED402",
   Green: {

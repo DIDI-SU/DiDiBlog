@@ -42,7 +42,8 @@ const BtnContainer = styled.div`
   background-color: ${({ theme }) => theme.Background};
   border-radius: 80px;
   :hover {
-    background-color: ${({ id, theme }) =>
+    cursor: pointer;
+    background-color: ${({ theme, id }) =>
       id !== "light" ? theme.Background : theme.Black};
   }
 `;
