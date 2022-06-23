@@ -18,4 +18,6 @@ const ICON = [
   { name: "github", value: faGithubSquare },
   { name: "letterV", value: faCircleCheck },
 ];
-export const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));
+
+const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));
+export default ICON_MAP;
