@@ -2,7 +2,7 @@ import * as React from "react";
 import { createGlobalStyle } from "styled-components";
 import { light } from "./theme";
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
   * {
@@ -77,3 +77,4 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
   `;
+export default GlobalStyles;

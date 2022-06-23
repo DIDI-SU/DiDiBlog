@@ -1,12 +1,15 @@
 import * as React from "react";
+
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../components/icon";
-import { light } from "../styles/theme";
 
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
 const Main = () => {
+  const isBrowser = typeof window !== "undefined";
+  const isDarkTheme = isBrowser && window.localStorage.getItem("theme");
+  console.log(isDarkTheme);
   return (
     <>
       <MainContentTop>
@@ -45,7 +48,7 @@ const Main = () => {
           </MainTitleContainer>
         </MainContentContainer>
       </MainContentTop>
-      <MainContentMiddle>
+      <MainContentMiddle isDarkTheme={isDarkTheme}>
         <MainContentTextContainerDiv id="skils">
           <MainContentCenterTitle>Skills</MainContentCenterTitle>
         </MainContentTextContainerDiv>
@@ -127,8 +130,8 @@ const MainContentTextContainerDiv = styled.div`
 `;
 const MainContentMiddle = styled.section`
   display: flex;
-  background-color: ${({ theme }) =>
-    theme === light ? theme.BrightGreen : theme.Black[50]};
+  background-color: ${({ theme, isDarkTheme }) =>
+    isDarkTheme !== "dark" ? theme.BrightGreen : theme.Black[50]};
   flex-direction: column;
   align-items: flex-start;
   padding: 20px 30px;

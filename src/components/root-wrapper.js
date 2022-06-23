@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useContext, useEffect, useState } from "react";
+import styled, { ThemeContext } from "styled-components";
 import Header from "./header";
 import { light, dark } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "../styles/global-style";
+import GlobalStyles from "../styles/global-style";
 
 const GlobalLayout = ({ children }) => {
+  const themeContext = useContext(ThemeContext);
   const isBrowser = typeof window !== "undefined";
   const [themeMode, setThemeMode] = useState("light");
   const isDarkTheme = themeMode === "dark";
@@ -16,6 +17,7 @@ const GlobalLayout = ({ children }) => {
       window.localStorage.setItem("theme", updatedTheme);
     }
   };
+
   useEffect(() => {
     if (isBrowser) {
       const saveTheme = localStorage.getItem("theme");
@@ -53,14 +55,6 @@ const MainWrapper = styled.main`
   justify-content: center;
   padding: 50px 0px;
 `;
-
-const MainTitleWrapper = styled.header`
-  margin-bottom: 70px;
-  border: 1px solid red;
-  height: 120px;
-  width: 500px;
-`;
-const MainTitle = styled.h1``;
 
 const MainCenter = styled.article`
   max-width: 1000px;
