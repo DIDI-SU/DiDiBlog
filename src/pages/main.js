@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import pofile from "../images/pic/KERO.jpg";
-import { ICON_MAP } from "../components/icon";
+import ICON_MAP from "../components/icon";
 import { light } from "../styles/theme";
 
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
@@ -34,11 +34,11 @@ const Main = () => {
                 </Li>
                 <Li>
                   <FontAwesomeIcon icon={ICON_MAP.get("github")} />
-                  <MainContentText>link</MainContentText>
+                  <MainContentText>https://github.com/DIDI-SU</MainContentText>
                 </Li>
                 <Li>
                   <FontAwesomeIcon icon={ICON_MAP.get("letterV")} />
-                  <MainContentText>link</MainContentText>
+                  <MainContentText>https://velog.io/@soojiv</MainContentText>
                 </Li>
               </Ul>
             </MainTitleTopBox>
