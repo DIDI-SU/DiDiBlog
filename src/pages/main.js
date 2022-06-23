@@ -47,7 +47,7 @@ const Main = () => {
       </MainContentTop>
       <MainContentMiddle>
         <MainContentTextContainerDiv id="skils">
-          <MainContentCenterTitle>Skils</MainContentCenterTitle>
+          <MainContentCenterTitle>Skills</MainContentCenterTitle>
         </MainContentTextContainerDiv>
         <MainContentCenterTechContainer>
           <MainContentCenterTechBox>

@@ -9,20 +9,20 @@ const ICON = [
 ];
 const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));
 
-const DarkBtn = ({ handleMode, mode }) => {
+const DarkBtn = ({ handleMode, mode, isDarkTheme }) => {
   return (
     <BtnContainer
-      id={mode}
-      onClick={(e) => {
-        handleMode(e);
+      isDarkTheme={isDarkTheme}
+      onClick={() => {
+        handleMode();
       }}
     >
       <BtnImg src={ICON_MAP.get("dark")} />
       <Btn
-        id={mode}
+        isDarkTheme={isDarkTheme}
         type="button"
-        onClick={(e) => {
-          handleMode(e);
+        onClick={() => {
+          handleMode();
         }}
       />
       <BtnImg src={ICON_MAP.get(mode)} />
@@ -43,19 +43,19 @@ const BtnContainer = styled.div`
   border-radius: 80px;
   :hover {
     cursor: pointer;
-    background-color: ${({ theme, id }) =>
-      id !== "light" ? theme.Background : theme.Black};
+    background-color: ${({ theme, isDarkTheme }) =>
+      isDarkTheme ? theme.Background : theme.Black};
   }
 `;
 
 const Btn = styled.button`
   position: absolute;
-  left: ${({ id }) => (id !== "light" ? "50px" : "5px")};
+  left: ${({ isDarkTheme }) => (isDarkTheme ? "50px" : "5px")};
   height: 35px;
   width: 35px;
   border-radius: 50%;
-  background-color: ${({ id, theme }) =>
-    id === "light" ? theme.Yellow : theme.Black[100]};
+  background-color: ${({ isDarkTheme, theme }) =>
+    isDarkTheme ? theme.Black[100] : theme.Yellow};
 `;
 
 const BtnImg = styled.img`

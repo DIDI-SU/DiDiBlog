@@ -4,15 +4,19 @@ import { light } from "../styles/theme";
 import styled from "styled-components";
 import DarkBtn from "./darkBtn";
 
-const Header = ({ handleMode, themeMode }) => {
+const Header = ({ handleMode, themeMode, isDarkTheme }) => {
   return (
-    <Headers themeMode={themeMode}>
+    <Headers>
       <HeaderNav>
         <HeaderTitleContainer>
           <img alt="블로그아이콘" />
           <HeaderTitle>디디가 타고 있어요</HeaderTitle>
         </HeaderTitleContainer>
-        <DarkBtn handleMode={handleMode} mode={themeMode} />
+        <DarkBtn
+          handleMode={handleMode}
+          mode={themeMode}
+          isDarkTheme={isDarkTheme}
+        />
       </HeaderNav>
     </Headers>
   );

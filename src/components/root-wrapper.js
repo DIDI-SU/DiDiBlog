@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "./header";
 import { light, dark } from "../styles/theme";
@@ -7,16 +7,32 @@ import { GlobalStyles } from "../styles/global-style";
 
 const GlobalLayout = ({ children }) => {
   const [themeMode, setThemeMode] = useState("light");
-  const theme = themeMode === "light" ? light : dark;
-  const handleMode = (e) => {
-    const { id } = e.target;
-    setThemeMode(id !== "light" ? "light" : "dark");
+  const isDarkTheme = themeMode === "dark";
+  const handleMode = () => {
+    const updatedTheme = isDarkTheme ? "light" : "dark";
+    setThemeMode(updatedTheme);
+    localStorage.setItem("theme", updatedTheme);
   };
 
+  useEffect(() => {
+    const saveTheme = localStorage.getItem("theme");
+    const prefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+    if (saveTheme && ["dark", "light"].includes(saveTheme)) {
+      setThemeMode(saveTheme);
+    } else if (prefersDark) {
+      setThemeMode("dark");
+    }
+  }, []);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDarkTheme ? dark : light}>
       <GlobalStyles />
-      <Header handleMode={handleMode} themeMode={themeMode} />
+      <Header
+        handleMode={handleMode}
+        themeMode={themeMode}
+        isDarkTheme={isDarkTheme}
+      />
       <MainWrapper>
         <MainCenter>{children}</MainCenter>
       </MainWrapper>
