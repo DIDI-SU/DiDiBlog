@@ -3,6 +3,7 @@ export const light = {
   Black: "#293045",
   FontColor: "#21243D",
   Yellow: "#FED402",
+  BrightGreen: "#edfaed",
   Green: {
     100: "#233116",
     90: "#354921",

@@ -1,6 +1,6 @@
-import email from "../images/Icon/gmail.png";
-import git from "../images/Icon/github.png";
-import letterV from "../images/Icon/letter-v.png";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Styled from "../assets/icon/styled.svg";
 import css from "../assets/icon/css.svg";
 import LogoReact from "../assets/icon/react.svg";
@@ -13,8 +13,8 @@ const ICON = [
   { name: "html5", value: LogoHTML },
   { name: "css", value: css },
   { name: "styled", value: Styled },
-  { name: "email", value: email },
-  { name: "github", value: git },
-  { name: "letterV", value: letterV },
+  { name: "email", value: faEnvelope },
+  { name: "github", value: faGithubSquare },
+  { name: "letterV", value: faCircleCheck },
 ];
 export const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));

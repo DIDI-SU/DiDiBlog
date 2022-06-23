@@ -1,7 +1,9 @@
 import * as React from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import pofile from "../images/pic/KERO.jpg";
 import { ICON_MAP } from "../components/icon";
-import styled from "styled-components";
+import { light } from "../styles/theme";
 
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
 const Main = () => {
@@ -27,15 +29,15 @@ const Main = () => {
             <MainTitleTopBox>
               <Ul>
                 <Li>
-                  <img src={ICON_MAP.get("email")} />
+                  <FontAwesomeIcon icon={ICON_MAP.get("email")} />
                   <MainContentText>jisoodidi86@gmail.com</MainContentText>
                 </Li>
                 <Li>
-                  <img src={ICON_MAP.get("github")} />
+                  <FontAwesomeIcon icon={ICON_MAP.get("github")} />
                   <MainContentText>https://github.com/DIDI-SU</MainContentText>
                 </Li>
                 <Li>
-                  <img src={ICON_MAP.get("letterV")} />
+                  <FontAwesomeIcon icon={ICON_MAP.get("letterV")} />
                   <MainContentText>https://velog.io/@soojiv</MainContentText>
                 </Li>
               </Ul>
@@ -105,14 +107,16 @@ const MainContentText = styled.p`
 const Ul = styled.ul`
   display: flex;
   flex-direction: column;
+  border-left: 1px solid;
+  padding-left: 6px;
 `;
 const Li = styled.li`
   display: flex;
   align-items: center;
-  padding-bottom: 8px;
-  img {
-    width: 20px;
-    height: 20px;
+  padding-bottom: 3px;
+  svg {
+    width: 16px;
+    height: 16px;
     margin-right: 5px;
   }
 `;
@@ -123,7 +127,8 @@ const MainContentTextContainerDiv = styled.div`
 `;
 const MainContentMiddle = styled.section`
   display: flex;
-  background-color: #edfaed;
+  background-color: ${({ theme }) =>
+    theme === light ? theme.BrightGreen : theme.Black[50]};
   flex-direction: column;
   align-items: flex-start;
   padding: 20px 30px;
