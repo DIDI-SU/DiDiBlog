@@ -1,3 +1,4 @@
+import * as React from "react";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
