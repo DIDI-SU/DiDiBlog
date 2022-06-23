@@ -6,22 +6,26 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../styles/global-style";
 
 const GlobalLayout = ({ children }) => {
+  const isBrowser = typeof window !== "undefined";
   const [themeMode, setThemeMode] = useState("light");
   const isDarkTheme = themeMode === "dark";
   const handleMode = () => {
     const updatedTheme = isDarkTheme ? "light" : "dark";
     setThemeMode(updatedTheme);
-    localStorage.setItem("theme", updatedTheme);
+    if (isBrowser) {
+      window.localStorage.setItem("theme", updatedTheme);
+    }
   };
-
   useEffect(() => {
-    const saveTheme = localStorage.getItem("theme");
-    const prefersDark =
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
-    if (saveTheme && ["dark", "light"].includes(saveTheme)) {
-      setThemeMode(saveTheme);
-    } else if (prefersDark) {
-      setThemeMode("dark");
+    if (isBrowser) {
+      const saveTheme = localStorage.getItem("theme");
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+      if (saveTheme && ["dark", "light"].includes(saveTheme)) {
+        setThemeMode(saveTheme);
+      } else if (prefersDark) {
+        setThemeMode("dark");
+      }
     }
   }, []);
 
