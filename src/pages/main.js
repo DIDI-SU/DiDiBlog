@@ -1,50 +1,65 @@
 import * as React from "react";
 import pofile from "../images/pic/KERO.jpg";
-import LogoReact from "../assets/icon/react.svg";
-import LogoHTML from "../assets/icon/html.svg";
-import LogoJS from "../assets/icon/js.svg";
+import { ICON_MAP } from "../components/icon";
 import styled from "styled-components";
 
-const ICON = [
-  { name: "react", value: LogoReact },
-  { name: "js", value: LogoJS },
-  { name: "html5", value: LogoHTML },
-  { name: "css", value: "a" },
-];
-const ICON_MAP = new Map(ICON.map((icon) => [icon.name, icon.value]));
-const ICON_NAME = ["html5", "js", "react"];
-
+const ICON_NAME = ["html5", "js", "css", "react", "styled"];
 const Main = () => {
-  console.log(pofile);
   return (
     <>
       <MainContentTop>
         <MainContentContainer>
           <MainContentContainerImg alt="이미지 들어갈 예정" src={pofile} />
         </MainContentContainer>
-        <MainContentTextContainer>
-          <MainContentTextContainerTitle>DIDI</MainContentTextContainerTitle>
-          <MainContentTextContainerDiv>
-            <MainContentText>
-              꾸준함을 노력하고자하는 프론트엔드 개발자 디디에요
-            </MainContentText>
-            <MainContentText>
-              어디에서라도 긍정적인면을 발견하는 것을 좋아합니다😊
-            </MainContentText>
-          </MainContentTextContainerDiv>
-        </MainContentTextContainer>
+        <MainContentContainer>
+          <MainTitleContainer>
+            <MainContentTextContainerTitle>디디</MainContentTextContainerTitle>
+          </MainTitleContainer>
+          <MainTitleContainer>
+            <MainTitleTopBox>
+              <MainContentText>
+                꾸준함을 노력하는 프론트엔드 개발자 디디입니다
+              </MainContentText>
+              <MainContentText>
+                어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
+              </MainContentText>
+            </MainTitleTopBox>
+            <MainTitleTopBox>
+              <Ul>
+                <Li>
+                  <img src={ICON_MAP.get("email")} />
+                  <MainContentText>jisoodidi86@gmail.com</MainContentText>
+                </Li>
+                <Li>
+                  <img src={ICON_MAP.get("github")} />
+                  <MainContentText>https://github.com/DIDI-SU</MainContentText>
+                </Li>
+                <Li>
+                  <img src={ICON_MAP.get("letterV")} />
+                  <MainContentText>https://velog.io/@soojiv</MainContentText>
+                </Li>
+              </Ul>
+            </MainTitleTopBox>
+          </MainTitleContainer>
+        </MainContentContainer>
       </MainContentTop>
       <MainContentMiddle>
-        {/* <MainContentTextContainerDiv>
-          <MainContentCenterTitle>
-            Tech 항목이 들어갈거에요!
-          </MainContentCenterTitle>
+        <MainContentTextContainerDiv id="skils">
+          <MainContentCenterTitle>Skils</MainContentCenterTitle>
         </MainContentTextContainerDiv>
         <MainContentCenterTechContainer>
-          {ICON_NAME.map((title) => {
-            return <MainContentTechImg alt={title} src={ICON_MAP.get(title)} />;
-          })}
-        </MainContentCenterTechContainer> */}
+          <MainContentCenterTechBox>
+            {ICON_NAME.map((title) => {
+              return (
+                <MainContentTechImg
+                  alt={title + "아이콘"}
+                  src={ICON_MAP.get(title)}
+                />
+              );
+            })}
+          </MainContentCenterTechBox>
+          <MainContentCenterTechBox></MainContentCenterTechBox>
+        </MainContentCenterTechContainer>
       </MainContentMiddle>
       <MainContentBottom></MainContentBottom>
     </>
@@ -53,48 +68,89 @@ const Main = () => {
 
 export default Main;
 
-//상단 컨테이너
 const MainContentTop = styled.section`
   display: flex;
   align-items: center;
-  padding: 20px 0px;
-  border-bottom: 1px solid;
+  padding-bottom: 20px;
 `;
 
-const MainContentContainer = styled.div``;
+const MainContentContainer = styled.div`
+  padding-right: 20px;
+`;
 const MainContentContainerImg = styled.img`
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
   border-radius: 66%;
 `;
-const MainContentTextContainer = styled.div`
-  padding: 20px 25px;
+
+const MainTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
+
 const MainContentTextContainerTitle = styled.h1`
   font-size: 30px;
   padding-bottom: 10px;
 `;
-const MainContentTextContainerDiv = styled.div``;
-const MainContentText = styled.p`
-  padding-bottom: 8px;
-`;
-//기술 항목이 들어갈 중단
-const MainContentMiddle = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-const MainContentCenterTitle = styled.h2``;
 
-const MainContentCenterTechContainer = styled.div`
+const MainTitleTopBox = styled.div``;
+
+const MainContentText = styled.p`
   display: flex;
   align-items: center;
+  padding-bottom: 8px;
+  padding-right: 5px;
+`;
+//연락 항목
+const Ul = styled.ul`
+  display: flex;
+  flex-direction: column;
+`;
+const Li = styled.li`
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+`;
+//기술 항목이 들어갈 중단
+
+const MainContentTextContainerDiv = styled.div`
+  padding-right: 20px;
+`;
+const MainContentMiddle = styled.section`
+  display: flex;
+  background-color: #edfaed;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  border-radius: 15px;
+`;
+const MainContentCenterTitle = styled.h2`
+  font-size: 20px;
+`;
+//이미지 들어갈 박스
+const MainContentCenterTechContainer = styled.div`
+  display: flex;
   justify-content: space-between;
+  padding: 20px 20px;
+`;
+
+const MainContentCenterTechBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
 `;
 
 const MainContentTechImg = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+  margin: 6px;
 `;
 
 const MainContentBottom = styled.section`

@@ -1,7 +1,7 @@
 export const light = {
   Background: "#FFFF",
   Black: "#293045",
-  FontColor: "#222222",
+  FontColor: "#21243D",
   Yellow: "#FED402",
   Green: {
     100: "#233116",
@@ -16,7 +16,7 @@ export const light = {
 
 export const dark = {
   Background: "#FFFF",
-  FontColor: "#222222",
+  FontColor: "#21243D",
   Black: {
     100: "#293045",
     90: "#353535",
