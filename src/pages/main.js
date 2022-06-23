@@ -34,11 +34,11 @@ const Main = () => {
                 </Li>
                 <Li>
                   <FontAwesomeIcon icon={ICON_MAP.get("github")} />
-                  <MainContentText>https://github.com/DIDI-SU</MainContentText>
+                  <MainContentText>link</MainContentText>
                 </Li>
                 <Li>
                   <FontAwesomeIcon icon={ICON_MAP.get("letterV")} />
-                  <MainContentText>https://velog.io/@soojiv</MainContentText>
+                  <MainContentText>link</MainContentText>
                 </Li>
               </Ul>
             </MainTitleTopBox>
