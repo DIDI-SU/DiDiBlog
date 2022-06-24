@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import styled, { ThemeContext } from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import Header from "./header";
 import { light, dark } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/global-style";
 
 const GlobalLayout = ({ children }) => {
-  const themeContext = useContext(ThemeContext);
   const isBrowser = typeof window !== "undefined";
   const [themeMode, setThemeMode] = useState("light");
   const isDarkTheme = themeMode === "dark";
@@ -14,7 +13,7 @@ const GlobalLayout = ({ children }) => {
     const updatedTheme = isDarkTheme ? "light" : "dark";
     setThemeMode(updatedTheme);
     if (isBrowser) {
-      window.localStorage.setItem("theme", updatedTheme);
+      localStorage.setItem("theme", updatedTheme);
     }
   };
 
@@ -26,7 +25,7 @@ const GlobalLayout = ({ children }) => {
       if (saveTheme && ["dark", "light"].includes(saveTheme)) {
         setThemeMode(saveTheme);
       } else if (prefersDark) {
-        setThemeMode("dark");
+        setThemeMode("light");
       }
     }
   }, []);

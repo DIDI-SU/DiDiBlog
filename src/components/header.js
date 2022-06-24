@@ -1,12 +1,10 @@
 import React from "react";
-
-import { light } from "../styles/theme";
 import styled from "styled-components";
 import DarkBtn from "./darkBtn";
 
 const Header = ({ handleMode, themeMode, isDarkTheme }) => {
   return (
-    <Headers>
+    <Headers isDarkTheme={isDarkTheme}>
       <HeaderNav>
         <HeaderTitleContainer>
           <img alt="블로그아이콘" />
@@ -25,8 +23,8 @@ const Header = ({ handleMode, themeMode, isDarkTheme }) => {
 export default Header;
 
 const Headers = styled.header`
-  background-color: ${({ theme }) =>
-    theme === light ? theme.Green[70] : theme.Black[50]};
+  background-color: ${({ theme, isDarkTheme }) =>
+    !isDarkTheme ? theme.Green[70] : theme.Black[50]};
   padding: 30px 50px;
 `;
 

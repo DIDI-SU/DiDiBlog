@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import sun from "../images/Icon/sun.png";
 import moon from "../images/Icon/moon.png";
 import styled from "styled-components";
@@ -55,7 +55,7 @@ const Btn = styled.button`
   width: 35px;
   border-radius: 50%;
   background-color: ${({ isDarkTheme, theme }) =>
-    isDarkTheme ? theme.Black[100] : theme.Yellow};
+    isDarkTheme ? theme.Black[50] : theme.Yellow};
 `;
 
 const BtnImg = styled.img`

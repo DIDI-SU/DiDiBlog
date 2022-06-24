@@ -1,6 +1,5 @@
 import * as React from "react";
-
-import styled from "styled-components";
+import styled, { useTheme, ThemeContext } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../components/icon";
@@ -8,8 +7,14 @@ import ICON_MAP from "../components/icon";
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
 const Main = () => {
   const isBrowser = typeof window !== "undefined";
-  const isDarkTheme = isBrowser && window.localStorage.getItem("theme");
-  console.log(isDarkTheme);
+  const [isDarkTheme, setIsDarkTheme] = React.useState(
+    isBrowser && localStorage.getItem("theme")
+  );
+
+  const theme = useTheme(ThemeContext);
+  React.useEffect(() => {
+    setIsDarkTheme(isBrowser && localStorage.getItem("theme"));
+  }, [theme]);
   return (
     <>
       <MainContentTop>
