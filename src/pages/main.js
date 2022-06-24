@@ -54,7 +54,7 @@ const Main = () => {
         </MainContentContainer>
       </MainContentTop>
       <MainContentMiddle isDarkTheme={isDarkTheme}>
-        <MainContentTextContainerDiv id="skils">
+        <MainContentTextContainerDiv>
           <MainContentCenterTitle>Skills</MainContentCenterTitle>
         </MainContentTextContainerDiv>
         <MainContentCenterTechContainer>
@@ -68,10 +68,17 @@ const Main = () => {
               );
             })}
           </MainContentCenterTechBox>
-          <MainContentCenterTechBox></MainContentCenterTechBox>
+          <MainContentCenterTechBox>
+            <MainContentTechImg alt="gitlogo" src={ICON_MAP.get("gitlogo")} />
+            <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
+          </MainContentCenterTechBox>
         </MainContentCenterTechContainer>
       </MainContentMiddle>
-      <MainContentBottom></MainContentBottom>
+      <MainContentBottom>
+        <MainContentTextContainerDiv>
+          <MainContentCenterTitle>프로젝트</MainContentCenterTitle>
+        </MainContentTextContainerDiv>
+      </MainContentBottom>
     </>
   );
 };
@@ -122,10 +129,11 @@ const Li = styled.li`
   display: flex;
   align-items: center;
   padding-bottom: 3px;
+
   svg {
+    margin-right: 5px;
     width: 16px;
     height: 16px;
-    margin-right: 5px;
   }
 `;
 //기술 항목이 들어갈 중단
@@ -135,21 +143,24 @@ const MainContentTextContainerDiv = styled.div`
 `;
 const MainContentMiddle = styled.section`
   display: flex;
-  background-color: ${({ theme, isDarkTheme }) =>
-    isDarkTheme !== "dark" ? theme.BrightGreen : theme.Black[50]};
   flex-direction: column;
   align-items: flex-start;
   padding: 20px 30px;
+  background-color: ${({ theme, isDarkTheme }) =>
+    isDarkTheme !== "dark" ? theme.BrightGreen : theme.Black[50]};
   border-radius: 15px;
 `;
+
 const MainContentCenterTitle = styled.h2`
   font-size: 20px;
 `;
 //이미지 들어갈 박스
 const MainContentCenterTechContainer = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 20px 20px;
+  width: 100%;
 `;
 
 const MainContentCenterTechBox = styled.div`
@@ -167,5 +178,6 @@ const MainContentTechImg = styled.img`
 `;
 
 const MainContentBottom = styled.section`
-  height: 120px;
+  padding: 20px 30px;
+  border-radius: 15px;
 `;
