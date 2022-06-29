@@ -90,6 +90,7 @@ const Main = () => {
               <MainContentText>
                 어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
               </MainContentText>
+              <DownLoadResume>이력서 확인하기</DownLoadResume>
             </MainTitleTopBox>
             <MainTitleTopBox>
               <Ul>
@@ -233,7 +234,7 @@ const MainContentCenterTitle = styled.h2`
 const MainContentCenterTechContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 20px 20px;
 `;
 
@@ -243,6 +244,7 @@ const MainContentCenterTechBox = styled.div`
   justify-content: center;
   padding: 20px;
   background-color: white;
+  width: 45%;
 `;
 
 const MainContentTechImg = styled.img`
@@ -269,4 +271,9 @@ const MainCardBox = styled.section`
 
 const MainArticle = styled.article`
   max-width: 1100px;
+`;
+
+const DownLoadResume = styled.button`
+  border: 1px solid black;
+  border-radius: 5px;
 `;
