@@ -1,10 +1,16 @@
 import * as React from "react";
+import Card from "../components/card";
 import styled, { useTheme, ThemeContext } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../components/icon";
 
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
+const TAG_NAME = [
+  { id: 0, name: "전체" },
+  { id: 1, name: "react" },
+  { id: 2, name: "js" },
+];
 const Main = () => {
   const isBrowser = typeof window !== "undefined";
   const [isDarkTheme, setIsDarkTheme] = React.useState(
@@ -53,7 +59,7 @@ const Main = () => {
           </MainTitleContainer>
         </MainContentContainer>
       </MainContentTop>
-      <MainContentMiddle isDarkTheme={isDarkTheme}>
+      <MainContentBox isDarkTheme={isDarkTheme} id="middle">
         <MainContentTextContainerDiv>
           <MainContentCenterTitle>Skills</MainContentCenterTitle>
         </MainContentTextContainerDiv>
@@ -73,12 +79,32 @@ const Main = () => {
             <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
           </MainContentCenterTechBox>
         </MainContentCenterTechContainer>
-      </MainContentMiddle>
-      <MainContentBottom>
+      </MainContentBox>
+      <MainContentBox>
         <MainContentTextContainerDiv>
           <MainContentCenterTitle>프로젝트</MainContentCenterTitle>
         </MainContentTextContainerDiv>
-      </MainContentBottom>
+        <MainContentTagContainer>
+          <MainContentTagBox>
+            {TAG_NAME.map((item) => {
+              const { id, name } = item;
+              return (
+                <MainContentTag id={id} keu={id}>
+                  {name.toUpperCase()}
+                </MainContentTag>
+              );
+            })}
+          </MainContentTagBox>
+        </MainContentTagContainer>
+        <MainCardBox>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+        </MainCardBox>
+      </MainContentBox>
     </>
   );
 };
@@ -141,14 +167,12 @@ const Li = styled.li`
 const MainContentTextContainerDiv = styled.div`
   padding-right: 20px;
 `;
-const MainContentMiddle = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+const MainContentBox = styled.section`
   padding: 20px 30px;
-  background-color: ${({ theme, isDarkTheme }) =>
+  background-color: ${({ theme, isDarkTheme, id }) =>
     isDarkTheme !== "dark" ? theme.BrightGreen : theme.Black[50]};
   border-radius: 15px;
+  margin-bottom: 20px;
 `;
 
 const MainContentCenterTitle = styled.h2`
@@ -160,7 +184,6 @@ const MainContentCenterTechContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 20px;
-  width: 100%;
 `;
 
 const MainContentCenterTechBox = styled.div`
@@ -176,8 +199,19 @@ const MainContentTechImg = styled.img`
   height: 60px;
   margin: 6px;
 `;
+const MainContentTagContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 
-const MainContentBottom = styled.section`
-  padding: 20px 30px;
-  border-radius: 15px;
+const MainContentTagBox = styled.select``;
+
+const MainContentTag = styled.option``;
+
+const MainCardBox = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 `;
