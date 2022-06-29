@@ -1,14 +1,17 @@
 import React from "react";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import ICON_MAP from "./icon";
 
-const Card = ({ id, name, tech }) => {
+const Card = ({ id, name, tech, link }) => {
   return (
     <CardDiv id="card" key={id}>
-      <img src={ICON_MAP.get((tech[1] + "").toLowerCase())} />
-      <CardBottom>
-        <CardTitle>{name}</CardTitle>
-      </CardBottom>
+      <Link to={link}>
+        <img src={ICON_MAP.get((tech[1] + "").toLowerCase())} />
+        <CardBottom>
+          <CardTitle>{name}</CardTitle>
+        </CardBottom>
+      </Link>
     </CardDiv>
   );
 };
