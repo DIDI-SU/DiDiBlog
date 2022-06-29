@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import ICON_MAP from "./icon";
 
 const Card = ({ id, name, tech }) => {
   return (
     <CardDiv id="card" key={id}>
-      adasd
+      <img src={ICON_MAP.get((tech[1] + "").toLowerCase())} />
       <CardBottom>
         <CardTitle>{name}</CardTitle>
       </CardBottom>
@@ -27,7 +28,6 @@ const CardBottom = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  border: 1px solid black;
   width: 100%;
   height: 20%;
   bottom: 0px;
@@ -38,4 +38,5 @@ const CardTitle = styled.span`
   font-size: 15px;
   color: black;
   font-weight: 700;
+  padding: 5px;
 `;

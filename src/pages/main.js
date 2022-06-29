@@ -13,23 +13,45 @@ const TAG_NAME = [
 ];
 
 const PROJECT = [
-  { id: 0, name: "💚인스타그램 클론💚", tech: ["all", "react"] },
-  { id: 1, name: "💚프로젝트 취하노💚", tech: ["all", "react"] },
-  { id: 2, name: "💚프로젝트 we eats💚", tech: ["all", "react"] },
-  { id: 3, name: "💚JS로 만드는 todo💚", tech: ["all", "js"] },
+  { id: 0, name: "💚인스타그램 클론💚", tech: ["all", "REACT"] },
+  { id: 1, name: "💚프로젝트 취하노💚", tech: ["all", "REACT"] },
+  { id: 2, name: "💚프로젝트 we eats💚", tech: ["all", "REACT"] },
+  { id: 3, name: "💚JS로 만드는 todo💚", tech: ["all", "JS"] },
 ];
 
 const Main = () => {
   const isBrowser = typeof window !== "undefined";
-  const [isSelect, setIsSelect] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [projectList, setProjectList] = React.useState(null);
+  const [isSelect, setIsSelect] = React.useState("전체");
   const [isDarkTheme, setIsDarkTheme] = React.useState(
     isBrowser && localStorage.getItem("theme")
   );
+  const handleSelect = (e) => {
+    setIsSelect(e.target.value);
+  };
 
   const theme = useTheme(ThemeContext);
   React.useEffect(() => {
     setIsDarkTheme(isBrowser && localStorage.getItem("theme"));
   }, [theme]);
+
+  const selectedFilter = () => {
+    if (isSelect === "전체") {
+      setProjectList(PROJECT);
+      setIsLoading(true);
+    } else {
+      const copy = [...PROJECT];
+      const final = copy.filter((info) => info.tech.includes(isSelect));
+      setProjectList(final);
+      setIsLoading(true);
+    }
+  };
+
+  React.useEffect(() => {
+    selectedFilter();
+  }, [isSelect]);
+
   return (
     <MainArticle>
       <MainContentTop>
@@ -94,7 +116,7 @@ const Main = () => {
           <MainContentCenterTitle>프로젝트</MainContentCenterTitle>
         </MainContentTextContainerDiv>
         <MainContentTagContainer>
-          <MainContentTagSelector>
+          <MainContentTagSelector onChange={(e) => handleSelect(e)}>
             {TAG_NAME.map((item) => {
               const { id, name } = item;
               return (
@@ -106,10 +128,11 @@ const Main = () => {
           </MainContentTagSelector>
         </MainContentTagContainer>
         <MainCardBox>
-          {PROJECT.map((item) => {
-            const { id, name, tech } = item;
-            return <Card id={id} name={name} tech={tech} />;
-          })}
+          {isLoading &&
+            projectList.map((item) => {
+              const { id, name, tech } = item;
+              return <Card id={id} name={name} tech={tech} />;
+            })}
         </MainCardBox>
       </MainContentBox>
     </MainArticle>
