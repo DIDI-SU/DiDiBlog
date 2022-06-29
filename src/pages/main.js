@@ -11,8 +11,17 @@ const TAG_NAME = [
   { id: 1, name: "react" },
   { id: 2, name: "js" },
 ];
+
+const PROJECT = [
+  { id: 0, name: "💚인스타그램 클론💚", tech: ["all", "react"] },
+  { id: 1, name: "💚프로젝트 취하노💚", tech: ["all", "react"] },
+  { id: 2, name: "💚프로젝트 we eats💚", tech: ["all", "react"] },
+  { id: 3, name: "💚JS로 만드는 todo💚", tech: ["all", "js"] },
+];
+
 const Main = () => {
   const isBrowser = typeof window !== "undefined";
+  const [isSelect, setIsSelect] = React.useState("");
   const [isDarkTheme, setIsDarkTheme] = React.useState(
     isBrowser && localStorage.getItem("theme")
   );
@@ -22,7 +31,7 @@ const Main = () => {
     setIsDarkTheme(isBrowser && localStorage.getItem("theme"));
   }, [theme]);
   return (
-    <>
+    <MainArticle>
       <MainContentTop>
         <MainContentContainer>
           <MainContentContainerImg alt="이미지 들어갈 예정" src={pofile} />
@@ -85,27 +94,25 @@ const Main = () => {
           <MainContentCenterTitle>프로젝트</MainContentCenterTitle>
         </MainContentTextContainerDiv>
         <MainContentTagContainer>
-          <MainContentTagBox>
+          <MainContentTagSelector>
             {TAG_NAME.map((item) => {
               const { id, name } = item;
               return (
-                <MainContentTag id={id} keu={id}>
+                <MainContentTag id={id} key={id}>
                   {name.toUpperCase()}
                 </MainContentTag>
               );
             })}
-          </MainContentTagBox>
+          </MainContentTagSelector>
         </MainContentTagContainer>
         <MainCardBox>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+          {PROJECT.map((item) => {
+            const { id, name, tech } = item;
+            return <Card id={id} name={name} tech={tech} />;
+          })}
         </MainCardBox>
       </MainContentBox>
-    </>
+    </MainArticle>
   );
 };
 
@@ -113,6 +120,7 @@ export default Main;
 
 const MainContentTop = styled.section`
   display: flex;
+  justify-content: center;
   align-items: center;
   padding-bottom: 20px;
 `;
@@ -204,7 +212,7 @@ const MainContentTagContainer = styled.div`
   justify-content: flex-end;
 `;
 
-const MainContentTagBox = styled.select``;
+const MainContentTagSelector = styled.select``;
 
 const MainContentTag = styled.option``;
 
@@ -214,4 +222,8 @@ const MainCardBox = styled.section`
   align-items: center;
   justify-content: center;
   padding: 10px;
+`;
+
+const MainArticle = styled.article`
+  max-width: 1100px;
 `;

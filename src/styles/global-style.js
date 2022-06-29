@@ -17,6 +17,9 @@ const GlobalStyles = createGlobalStyle`
       theme === light ? theme.Background : theme.Black[100]};
     color: ${({ theme }) =>
       theme === light ? theme.FontColor : theme.Background};
+      #card{ background-color: ${({ theme }) =>
+        theme === light ? theme.Background : theme.Black[50]};
+        border:none}
 
   }
   html, body, div, span, applet, object, iframe,
