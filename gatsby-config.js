@@ -5,7 +5,6 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sass",
-    "gatsby-plugin-mdx",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-plugin-fontawesome-css",
@@ -15,11 +14,19 @@ module.exports = {
       options: {},
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
         path: `${__dirname}/src/markdown-pages`,
       },
     },
+    `gatsby-transformer-remark`,
   ],
 };

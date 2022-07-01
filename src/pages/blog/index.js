@@ -1,9 +1,9 @@
 import * as React from "react";
+import GlobalLayout from "../../components/root-wrapper";
 import styled from "styled-components";
-import GlobalLayout from "../components/root-wrapper";
-import BlogCard from "../components/blogCard";
+import BlogCard from "../../components/blogCard";
 
-const Blog = () => {
+const BlogIndex = () => {
   return (
     <GlobalLayout>
       <BlogTop>
@@ -23,7 +23,7 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default BlogIndex;
 const BlogTop = styled.section``;
 const BlogTitleBox = styled.div``;
 const BlogTitle = styled.h2``;
