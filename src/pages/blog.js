@@ -1,14 +1,13 @@
 import * as React from "react";
+import styled from "styled-components";
 import GlobalLayout from "../components/root-wrapper";
-import Main from "./main";
-import Blog from "./blog";
 
-const IndexPage = () => {
+const Blog = () => {
   return (
     <GlobalLayout>
-      <Main />
+      <div>인사 페이지</div>
     </GlobalLayout>
   );
 };
 
-export default IndexPage;
+export default Blog;

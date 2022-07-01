@@ -1,6 +1,7 @@
 import * as React from "react";
 import Card from "../components/card";
-import styled, { useTheme, ThemeContext } from "styled-components";
+import MainBox from "../components/mainBox";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../components/icon";
@@ -37,24 +38,22 @@ const PROJECT = [
     tech: ["all", "JS"],
     link: "https://github.com/DIDI-SU/todojsch",
   },
+  {
+    id: 4,
+    name: "(진행중)기술 면접 문제 은행",
+    tech: ["all", "REACT", "NEXT"],
+    link: "",
+  },
 ];
 
 const Main = () => {
-  const isBrowser = typeof window !== "undefined";
   const [isLoading, setIsLoading] = React.useState(false);
   const [projectList, setProjectList] = React.useState(null);
   const [isSelect, setIsSelect] = React.useState("전체");
-  const [isDarkTheme, setIsDarkTheme] = React.useState(
-    isBrowser && localStorage.getItem("theme")
-  );
+
   const handleSelect = (e) => {
     setIsSelect(e.target.value);
   };
-
-  const theme = useTheme(ThemeContext);
-  React.useEffect(() => {
-    setIsDarkTheme(isBrowser && localStorage.getItem("theme"));
-  }, [theme]);
 
   const selectedFilter = () => {
     if (isSelect === "전체") {
@@ -111,10 +110,7 @@ const Main = () => {
           </MainTitleContainer>
         </MainContentContainer>
       </MainContentTop>
-      <MainContentBox isDarkTheme={isDarkTheme} id="middle">
-        <MainContentTextContainerDiv>
-          <MainContentCenterTitle>Skills</MainContentCenterTitle>
-        </MainContentTextContainerDiv>
+      <MainBox title="Skills" id="middle">
         <MainContentCenterTechContainer>
           <MainContentCenterTechBox>
             {ICON_NAME.map((title) => {
@@ -131,11 +127,8 @@ const Main = () => {
             <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
           </MainContentCenterTechBox>
         </MainContentCenterTechContainer>
-      </MainContentBox>
-      <MainContentBox>
-        <MainContentTextContainerDiv>
-          <MainContentCenterTitle>프로젝트</MainContentCenterTitle>
-        </MainContentTextContainerDiv>
+      </MainBox>
+      <MainBox title="프로젝트">
         <MainContentTagContainer>
           <MainContentTagSelector onChange={(e) => handleSelect(e)}>
             {TAG_NAME.map((item) => {
@@ -155,7 +148,7 @@ const Main = () => {
               return <Card id={id} name={name} tech={tech} link={link} />;
             })}
         </MainCardBox>
-      </MainContentBox>
+      </MainBox>
     </MainArticle>
   );
 };
@@ -216,20 +209,6 @@ const Li = styled.li`
 `;
 //기술 항목이 들어갈 중단
 
-const MainContentTextContainerDiv = styled.div`
-  padding-right: 20px;
-`;
-const MainContentBox = styled.section`
-  padding: 20px 30px;
-  background-color: ${({ theme, isDarkTheme, id }) =>
-    isDarkTheme !== "dark" ? theme.BrightGreen : theme.Black[50]};
-  border-radius: 15px;
-  margin-bottom: 20px;
-`;
-
-const MainContentCenterTitle = styled.h2`
-  font-size: 20px;
-`;
 //이미지 들어갈 박스
 const MainContentCenterTechContainer = styled.div`
   display: flex;

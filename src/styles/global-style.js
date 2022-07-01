@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) =>
       theme === light ? theme.FontColor : theme.Background};
       #card{ background-color: ${({ theme }) =>
-        theme === light ? theme.Background : theme.Black[50]};
+        theme === light ? theme.Background : theme.Background};
         border:none}
 
   }
@@ -65,6 +65,7 @@ const GlobalStyles = createGlobalStyle`
   }
   a {
     text-decoration: none;
+    color: black;
   }
   button {
     border: none;
