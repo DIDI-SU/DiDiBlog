@@ -128,6 +128,7 @@ const Main = () => {
           </MainContentCenterTechBox>
         </MainContentCenterTechContainer>
       </MainBox>
+
       <MainBox title="프로젝트">
         <MainContentTagContainer>
           <MainContentTagSelector onChange={(e) => handleSelect(e)}>

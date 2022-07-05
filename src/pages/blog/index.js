@@ -1,26 +1,31 @@
 import * as React from "react";
-import { Link } from "gatsby";
 import GlobalLayout from "../../components/root-wrapper";
-import styled from "styled-components";
-import BlogCard from "../../components/blogCard";
 import { graphql } from "gatsby";
+import styled from "styled-components";
 
 const BlogIndex = ({ data }) => {
-  const { id } = data.markdownRemark;
-  const { tags, date, title, slug } = data.markdownRemark.frontmatter;
+  const { group } = data.allMarkdownRemark;
+  const tags = group && group.map((item) => item.tag);
+
   return (
     <GlobalLayout>
       <BlogTop>
         <BlogTitleBox>
-          <BlogTitle>기록 모음</BlogTitle>
+          <BlogTitle>기록장</BlogTitle>
         </BlogTitleBox>
       </BlogTop>
-      <div>
-        <ul>{tags && tags.map((item) => <li> {item}</li>)}</ul>
-      </div>
-      <BlogList>
-        <Link to={slug}>{title}</Link>
-      </BlogList>
+      <BlogTagList>
+        <BlogTagUl>
+          {group.map((item) => (
+            <BlogTagLi key={item.tag}>
+              <BlogTagText>
+                {item.tag}({item.totalCount})
+              </BlogTagText>
+            </BlogTagLi>
+          ))}
+        </BlogTagUl>
+      </BlogTagList>
+      <BlogList></BlogList>
     </GlobalLayout>
   );
 };
@@ -33,16 +38,30 @@ const BlogTitle = styled.h2`
 `;
 const BlogList = styled.section``;
 
+const BlogTagList = styled.section`
+  padding: 15px 0px;
+`;
+const BlogTagUl = styled.ul`
+  display: flex;
+  align-items: center;
+`;
+const BlogTagLi = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+const BlogTagText = styled.p`
+  padding: 5px;
+  border-radius: 8px;
+`;
+
 export const pageQuery = graphql`
-  query ($id: String) {
-    markdownRemark(id: { eq: $id }) {
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        slug
-        title
-        tags
+  query {
+    allMarkdownRemark {
+      group(field: frontmatter___tags) {
+        tag: fieldValue
+        totalCount
       }
-      id
     }
   }
 `;
