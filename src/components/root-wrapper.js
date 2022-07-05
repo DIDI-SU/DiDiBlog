@@ -49,12 +49,12 @@ export default GlobalLayout;
 
 //전체감싸주는 메인
 const MainWrapper = styled.main`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 50px 0px;
 `;
 
 const MainCenter = styled.article`
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
   max-width: 1000px;
 `;
