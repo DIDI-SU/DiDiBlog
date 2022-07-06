@@ -1,12 +1,13 @@
 import * as React from "react";
 import GlobalLayout from "../../components/root-wrapper";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import styled from "styled-components";
+import BlogCard from "../../components/blogCard";
 
 const BlogIndex = ({ data }) => {
   const { group } = data.allMarkdownRemark;
-  const tags = group && group.map((item) => item.tag);
-
+  const postList = data.allMarkdownRemark.nodes;
+  console.log(postList);
   return (
     <GlobalLayout>
       <BlogTop>
@@ -25,7 +26,17 @@ const BlogIndex = ({ data }) => {
           ))}
         </BlogTagUl>
       </BlogTagList>
-      <BlogList></BlogList>
+      <BlogList>
+        {postList &&
+          postList.map((item) => {
+            const { frontmatter } = item;
+            return (
+              <Link to={frontmatter.slug}>
+                <BlogCard frontmatter={frontmatter} html={item.html} />
+              </Link>
+            );
+          })}
+      </BlogList>
     </GlobalLayout>
   );
 };
@@ -56,8 +67,17 @@ const BlogTagText = styled.p`
 `;
 
 export const pageQuery = graphql`
-  query {
-    allMarkdownRemark {
+  {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      nodes {
+        frontmatter {
+          slug
+          title
+          tags
+          date
+        }
+        html
+      }
       group(field: frontmatter___tags) {
         tag: fieldValue
         totalCount

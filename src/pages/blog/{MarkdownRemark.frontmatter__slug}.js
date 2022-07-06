@@ -1,21 +1,23 @@
 import React from "react";
-
+import GlobalLayout from "../../components/root-wrapper";
+import sanitizeHtml from "sanitize-html";
 import { graphql } from "gatsby";
 
 const Posts = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
+
+  const Html = sanitizeHtml(html);
   return (
-    <div className="blog-post-container">
-      <div className="blog-post">
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+    <GlobalLayout>
+      <div>
+        <div>
+          <h1>{frontmatter.title}</h1>
+          <h2>{frontmatter.date}</h2>
+          <div dangerouslySetInnerHTML={{ __html: Html }} />
+        </div>
       </div>
-    </div>
+    </GlobalLayout>
   );
 };
 
