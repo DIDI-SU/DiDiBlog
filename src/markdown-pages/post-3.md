@@ -1,5 +1,5 @@
 ---
-slug: "my-third-post"
+slug: "/blog/my-third-post"
 date: "2022-07-04"
 title: "React & Next"
 tags: ["React", "Next", "ALL"]

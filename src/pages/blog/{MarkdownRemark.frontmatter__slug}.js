@@ -2,6 +2,7 @@ import React from "react";
 import GlobalLayout from "../../components/root-wrapper";
 import sanitizeHtml from "sanitize-html";
 import { graphql } from "gatsby";
+import styled from "styled-components";
 
 const Posts = ({ data }) => {
   const { markdownRemark } = data;
@@ -10,10 +11,12 @@ const Posts = ({ data }) => {
   const Html = sanitizeHtml(html);
   return (
     <GlobalLayout>
+      <TitleSection>
+        <Title>{frontmatter.title}</Title>
+        <PostDate>{frontmatter.date}</PostDate>
+      </TitleSection>
       <div>
         <div>
-          <h1>{frontmatter.title}</h1>
-          <h2>{frontmatter.date}</h2>
           <div dangerouslySetInnerHTML={{ __html: Html }} />
         </div>
       </div>
@@ -35,3 +38,12 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+const TitleSection = styled.section`
+  padding: 15px 0px;
+`;
+const Title = styled.h1`
+  font-size: 40px;
+  padding: 10px 0px;
+`;
+const PostDate = styled.p``;
