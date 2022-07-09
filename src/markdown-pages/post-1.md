@@ -2,7 +2,7 @@
 slug: "my-first-post"
 date: "2022-06-20"
 title: "모던 자바스크립트 딥다이브 CH04"
-tags: ["JavaScript"]
+tags: ["JavaScript", "ALL"]
 ---
 
 ## 4

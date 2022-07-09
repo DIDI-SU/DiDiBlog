@@ -40,6 +40,8 @@ const GlobalStyles = createGlobalStyle`
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
+    color: ${({ theme }) =>
+      theme === light ? theme.FontColor : theme.Background};
   }
   article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {

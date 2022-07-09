@@ -3,27 +3,30 @@ import styled from "styled-components";
 import sanitizeHtml from "sanitize-html";
 const BlogCard = ({ frontmatter, html }) => {
   const { title, date, tags } = frontmatter;
-  const Html = sanitizeHtml(html);
+  const fullHtml = sanitizeHtml(html);
+  const finalHtml = fullHtml.replace(/<[^>]+>/g, "");
+
   return (
     <Card>
       <TitleDiv>
         <Title>{title}</Title>
+        <BlogTagList>
+          <BlogTagUl>
+            {tags.map((item) => (
+              <BlogTagLi key={item}>
+                <BlogTagText>{item}</BlogTagText>
+              </BlogTagLi>
+            ))}
+          </BlogTagUl>
+        </BlogTagList>
       </TitleDiv>
-      <BlogTagList>
-        <BlogTagUl>
-          {tags.map((item) => (
-            <BlogTagLi key={item}>
-              <BlogTagText>{item}</BlogTagText>
-            </BlogTagLi>
-          ))}
-        </BlogTagUl>
-      </BlogTagList>
+
+      <Post>
+        <PostSummary dangerouslySetInnerHTML={{ __html: finalHtml }} />
+      </Post>
       <DateDiv>
         <p>{date}</p>
       </DateDiv>
-      <Post>
-        <div dangerouslySetInnerHTML={{ __html: Html }} />
-      </Post>
     </Card>
   );
 };
@@ -39,7 +42,11 @@ const Title = styled.h2`
   font-size: 20px;
 `;
 
-const TitleDiv = styled.div``;
+const TitleDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const BlogTagList = styled.section`
   padding: 15px 0px;
@@ -59,17 +66,14 @@ const DateDiv = styled.div`
   flex-direction: row-reverse;
 `;
 
-const Post = styled.section`
-  margin: 10px 0px;
-  padding: 10px;
-  border: 1px solid red;
-  border-radius: 8px;
-  div {
-    height: 150px;
-    width: auto;
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+const Post = styled.section``;
+
+const PostSummary = styled.div`
+  max-width: 800px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
