@@ -4,6 +4,8 @@ import Header from "./header";
 import { light, dark } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/global-style";
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
 
 const GlobalLayout = ({ children }) => {
   const isBrowser = typeof window !== "undefined";
@@ -16,7 +18,6 @@ const GlobalLayout = ({ children }) => {
       localStorage.setItem("theme", updatedTheme);
     }
   };
-
   useEffect(() => {
     if (isBrowser) {
       const saveTheme = localStorage.getItem("theme");

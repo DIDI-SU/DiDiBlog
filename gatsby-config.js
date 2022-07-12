@@ -28,5 +28,13 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-remark-highlight-code`,
+      options: {
+        terminal: "carbon",
+        theme: "monokai",
+        lineNumbers: true,
+      },
+    },
   ],
 };

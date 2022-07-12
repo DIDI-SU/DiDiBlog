@@ -17,7 +17,7 @@ tags: ["JavaScript", "ALL"]
 
 ### 객체의 형태
 
-```jsx
+```javascript
 var person = {
   name: "Lee",
   age: 20,

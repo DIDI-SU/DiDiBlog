@@ -8,7 +8,6 @@ const BlogIndex = ({ data }) => {
   const { group } = data.allMarkdownRemark;
   const postList = data.allMarkdownRemark.nodes;
 
-  console.log(postList);
   return (
     <GlobalLayout>
       <BlogTop>
