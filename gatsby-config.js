@@ -27,13 +27,21 @@ module.exports = {
         path: `${__dirname}/src/markdown-pages`,
       },
     },
-    `gatsby-transformer-remark`,
     {
-      resolve: `gatsby-remark-highlight-code`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        terminal: "carbon",
-        theme: "monokai",
-        lineNumbers: true,
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
+          },
+        ],
       },
     },
   ],

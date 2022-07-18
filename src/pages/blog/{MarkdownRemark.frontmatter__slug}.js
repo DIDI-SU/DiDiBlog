@@ -3,23 +3,25 @@ import GlobalLayout from "../../components/root-wrapper";
 import sanitizeHtml from "sanitize-html";
 import { graphql } from "gatsby";
 import styled from "styled-components";
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 const Posts = ({ data }) => {
+  const pre = document.getElementsByTagName("pre");
+
+  const addClass = document.getElementsByTagName("code");
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   const Html = sanitizeHtml(html);
-  async function componentDidMount() {
-    try {
-      const deckdeckgoLoader = require("@deckdeckgo/highlight-code/dist/loader");
 
-      await deckdeckgoLoader.defineCustomElements(window);
-    } catch (err) {
-      console.error(err);
-    }
-  }
   useEffect(() => {
-    componentDidMount();
+    const lengths = addClass.length;
+    const preLength = pre.length;
+    for (let i = 0; i < lengths; i++) {
+      addClass[i].classList.add("language-");
+    }
+    for (let i = 0; i < preLength; i++) {
+      pre[i].classList.add("language-");
+    }
   }, []);
+
   return (
     <GlobalLayout>
       <TitleSection>
@@ -49,9 +51,12 @@ export const pageQuery = graphql`
 
 const TitleSection = styled.section`
   padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 const Title = styled.h1`
-  font-size: 40px;
+  font-size: 30px;
   padding: 10px 0px;
 `;
 const PostDate = styled.p``;
@@ -61,8 +66,17 @@ const PostSection = styled.section`
   padding: 10px 0px;
   line-height: 150%;
   h2 {
-    font-size: 19px;
+    font-size: 25px;
+    margin: 8px 0px;
   }
-  code {
+  h3 {
+    font-size: 18px;
+    padding: 5px 5px;
+    border-left: 2px solid black;
+    line-height: 150%;
+  }
+  p {
+    line-height: 150%;
+    padding: 5px 0px;
   }
 `;

@@ -5,8 +5,6 @@ title: "모던 자바스크립트 딥다이브 CH04"
 tags: ["JavaScript", "ALL"]
 ---
 
-## 4
-
 ## 변수 ?
 
 ### 변수의 정의와 용어
@@ -15,7 +13,7 @@ tags: ["JavaScript", "ALL"]
 
 정의를 통해 우리는 변수가 전자인 **메모리 공간 자체** 후자인 **메모리 공간 식별을 위한 이름**이라는 두 가지 의미로 활용되는 것을 확인할 수 있습니다 .
 
-```{: .jsx }
+```javascript
 const result = 10 + 20;
 ```
 
@@ -31,7 +29,7 @@ const result = 10 + 20;
 
 변수를 사용하려면 반드시 선언이 필요합니다. 자바스크립트에서는 `var` `let` `const` 가 사용되고 있습니다.
 
-```jsx
+```javascript
 var score;
 ```
 
@@ -39,7 +37,7 @@ var score;
 
 ### 변수 선언의 실행 시점과 변수 호이스팅
 
-```jsx
+```javascript
 console.log(score);
 var score;
 ```
@@ -56,7 +54,7 @@ var score;
 
 변수에서 값을 할당 할 때에는 할당 연산자 `=` 를 사용해 줍니다. 이때 할당 연산자는 오른쪽의 값을 왼쪽의 변수에 할당해줍니다.
 
-```jsx
+```javascript
 var score;
 score = 80;
 ```
@@ -65,7 +63,7 @@ score = 80;
 
 이 때 선언과 할당에서의 차이는, 변수의 선언은 소스 코드가 순차적으로 실행되는 시점인 런타임 이전에 실행 되지만, 값의 할당은 소스 코드가 순차적으로 실행되는 런타임에 실행된다는 것입니다.
 
-```jsx
+```javascript
 console.log(score); // undeifined
 score = 80;
 var score;
@@ -74,7 +72,7 @@ console.log(score); //80
 
 위에서 80이 나오게 된 흐름을 순서대로 작성해 보았습니다
 
-```jsx
+```javascript
 var score;
 console.log(score);
 socre = 80;
