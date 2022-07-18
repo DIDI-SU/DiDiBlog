@@ -30,8 +30,9 @@ const BlogIndex = ({ data }) => {
         {postList &&
           postList.map((item) => {
             const { frontmatter } = item;
+
             return (
-              <Link to={`${frontmatter.slug}`}>
+              <Link to={"/blog/" + frontmatter.slug}>
                 <BlogCard frontmatter={frontmatter} html={item.html} />
               </Link>
             );
