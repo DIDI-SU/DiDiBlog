@@ -75,7 +75,7 @@ const Main = () => {
     <MainArticle>
       <MainContentTop>
         <MainContentContainer>
-          <MainContentContainerImg alt="이미지 들어갈 예정" src={pofile} />
+          <MainContentContainerImg alt="자고 있는 캐로피사진" src={pofile} />
         </MainContentContainer>
         <MainContentContainer>
           <MainTitleContainer>
@@ -128,7 +128,6 @@ const Main = () => {
           </MainContentCenterTechBox>
         </MainContentCenterTechContainer>
       </MainBox>
-
       <MainBox title="프로젝트">
         <MainContentTagContainer>
           <MainContentTagSelector onChange={(e) => handleSelect(e)}>
@@ -170,11 +169,21 @@ const MainContentContainerImg = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 66%;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const MainTitleContainer = styled.div`
   display: flex;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    :last-child {
+      align-items: flex-end;
+    }
+  }
 `;
 
 const MainContentTextContainerTitle = styled.h1`
@@ -196,6 +205,11 @@ const Ul = styled.ul`
   flex-direction: column;
   border-left: 1px solid;
   padding-left: 6px;
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    margin: 5px 0px;
+    border: none;
+  }
 `;
 const Li = styled.li`
   display: flex;
@@ -207,6 +221,12 @@ const Li = styled.li`
     width: 16px;
     height: 16px;
   }
+
+  @media screen and (max-width: 768px) {
+    p {
+      display: none;
+    }
+  }
 `;
 //기술 항목이 들어갈 중단
 
@@ -215,22 +235,33 @@ const MainContentCenterTechContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 20px 20px;
+  padding: 20px;
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 const MainContentCenterTechBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 30px;
   background-color: white;
-  width: 45%;
+  width: 48%;
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const MainContentTechImg = styled.img`
   width: 60px;
   height: 60px;
   margin: 6px;
+
+  @media screen and (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+  }
 `;
 const MainContentTagContainer = styled.div`
   display: flex;

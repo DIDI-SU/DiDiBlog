@@ -54,6 +54,10 @@ const BlogTagList = styled.section`
 const BlogTagUl = styled.ul`
   display: flex;
   flex-direction: row-reverse;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 const BlogTagLi = styled.li``;
 
@@ -66,7 +70,11 @@ const DateDiv = styled.div`
   flex-direction: row-reverse;
 `;
 
-const Post = styled.section``;
+const Post = styled.section`
+  @media screen and (max-width: 768px) {
+    padding: 10px 0px;
+  }
+`;
 
 const PostSummary = styled.div`
   max-width: 800px;
@@ -76,4 +84,8 @@ const PostSummary = styled.div`
   display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;

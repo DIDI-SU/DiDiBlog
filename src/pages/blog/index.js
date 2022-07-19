@@ -25,6 +25,15 @@ const BlogIndex = ({ data }) => {
             </BlogTagLi>
           ))}
         </BlogTagUl>
+        <BlogFilter>
+          {group.map((item) => {
+            return (
+              <option key={item.tag}>
+                {item.tag}({item.totalCount})
+              </option>
+            );
+          })}
+        </BlogFilter>
       </BlogTagList>
       <BlogList>
         {postList &&
@@ -43,19 +52,39 @@ const BlogIndex = ({ data }) => {
 };
 
 export default BlogIndex;
-const BlogTop = styled.section``;
+const BlogTop = styled.section`
+  padding: 0px 10px;
+`;
 const BlogTitleBox = styled.div``;
 const BlogTitle = styled.h2`
   font-size: 30px;
 `;
-const BlogList = styled.section``;
+const BlogList = styled.section`
+  padding: 0px 10px;
+`;
 
 const BlogTagList = styled.section`
   padding: 15px 0px;
+  @media screen and (max-width: 768px) {
+    padding: 15px;
+    display: flex;
+
+    justify-content: flex-end;
+  }
 `;
 const BlogTagUl = styled.ul`
   display: flex;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const BlogFilter = styled.select`
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
 `;
 const BlogTagLi = styled.li`
   display: flex;

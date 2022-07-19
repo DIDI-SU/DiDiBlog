@@ -58,8 +58,16 @@ const TitleSection = styled.section`
 const Title = styled.h1`
   font-size: 30px;
   padding: 10px 0px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
-const PostDate = styled.p``;
+const PostDate = styled.p`
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
 
 const PostSection = styled.section`
   border-top: 1px solid;
@@ -78,5 +86,9 @@ const PostSection = styled.section`
   p {
     line-height: 150%;
     padding: 5px 0px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 10px;
   }
 `;

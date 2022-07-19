@@ -46,6 +46,11 @@ const BtnContainer = styled.div`
     background-color: ${({ theme, isDarkTheme }) =>
       isDarkTheme ? theme.Background : theme.Black};
   }
+
+  @media screen and (max-width: 768px) {
+    width: 70px;
+    height: 30px;
+  }
 `;
 
 const Btn = styled.button`
@@ -56,9 +61,20 @@ const Btn = styled.button`
   border-radius: 50%;
   background-color: ${({ isDarkTheme, theme }) =>
     isDarkTheme ? theme.Black[50] : theme.Yellow};
+
+  @media screen and (max-width: 768px) {
+    width: 25px;
+    height: 25px;
+    left: ${({ isDarkTheme }) => (isDarkTheme ? "40px" : "6px")};
+  }
 `;
 
 const BtnImg = styled.img`
   height: 30px;
   width: 30px;
+
+  @media screen and (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
