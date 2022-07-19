@@ -25,6 +25,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^2.0.7",
+    "browser-monads": "^1.0.0",
     "gatsby": "^4.14.1",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
     "gatsby-plugin-image": "^2.17.0",
