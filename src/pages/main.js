@@ -110,24 +110,33 @@ const Main = () => {
           </MainTitleContainer>
         </MainContentContainer>
       </MainContentTop>
-      <MainBox title="Skills" id="middle">
-        <MainContentCenterTechContainer>
-          <MainContentCenterTechBox>
+      <MainContentTop>
+        <MainBox title="Skills " id="middle">
+          <MainContentCenterTechContainer>
             {ICON_NAME.map((title) => {
               return (
-                <MainContentTechImg
-                  alt={title + "아이콘"}
-                  src={ICON_MAP.get(title)}
-                />
+                <MainContentCenterTechBox>
+                  <MainContentTechImg
+                    alt={title + "아이콘"}
+                    src={ICON_MAP.get(title)}
+                  />
+                </MainContentCenterTechBox>
               );
             })}
-          </MainContentCenterTechBox>
-          <MainContentCenterTechBox>
-            <MainContentTechImg alt="gitlogo" src={ICON_MAP.get("gitlogo")} />
-            <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
-          </MainContentCenterTechBox>
-        </MainContentCenterTechContainer>
-      </MainBox>
+          </MainContentCenterTechContainer>
+        </MainBox>
+        <MainBox title="Tools " id="middle">
+          <MainContentCenterTechContainer>
+            <MainContentCenterTechBox>
+              <MainContentTechImg alt="gitlogo" src={ICON_MAP.get("gitlogo")} />
+            </MainContentCenterTechBox>
+            <MainContentCenterTechBox>
+              <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
+            </MainContentCenterTechBox>
+          </MainContentCenterTechContainer>
+        </MainBox>
+      </MainContentTop>
+
       <MainBox title="프로젝트">
         <MainContentTagContainer>
           <MainContentTagSelector onChange={(e) => handleSelect(e)}>
@@ -234,8 +243,9 @@ const Li = styled.li`
 const MainContentCenterTechContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 20px;
+
   @media screen and (max-width: 768px) {
     padding: 10px;
   }
@@ -245,9 +255,7 @@ const MainContentCenterTechBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
-  background-color: white;
-  width: 48%;
+  width: 50%;
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;
   }
@@ -257,7 +265,9 @@ const MainContentTechImg = styled.img`
   width: 60px;
   height: 60px;
   margin: 6px;
-
+  padding: 5px;
+  background-color: white;
+  border-radius: 50%;
   @media screen and (max-width: 768px) {
     width: 45px;
     height: 45px;
@@ -274,10 +284,8 @@ const MainContentTag = styled.option``;
 
 const MainCardBox = styled.section`
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
 `;
 
 const MainArticle = styled.article`

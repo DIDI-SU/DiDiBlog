@@ -19,7 +19,7 @@ const Card = ({ id, name, tech, link }) => {
 export default Card;
 
 const CardDiv = styled.div`
-  width: 30%;
+  width: 40%;
   height: 190px;
   border-radius: 3px;
   margin: 10px;

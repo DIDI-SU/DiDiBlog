@@ -30,7 +30,7 @@ const MainContentBox = styled.section`
   background-color: ${({ theme, isDarkTheme, id }) =>
     isDarkTheme !== "dark" ? theme.BrightGreen : theme.Black[50]};
   border-radius: 15px;
-  margin-bottom: 20px;
+  margin: 0px 10px 20px 0px;
 `;
 
 const MainContentTextContainerDiv = styled.div`
