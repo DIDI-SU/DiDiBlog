@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "styled-components";
-import DarkBtn from "./darkBtn";
-import { faHome, faBook } from "@fortawesome/free-solid-svg-icons";
-import pofile from "../images/pic/KERO.jpg";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faBook } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+import DarkBtn from "../DarkBtn/darkBtn";
+import pofile from "../../images/pic/KERO.jpg";
 
 const Header = ({ handleMode, themeMode, isDarkTheme }) => {
   return (

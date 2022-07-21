@@ -2,7 +2,7 @@ import * as React from "react";
 import GlobalLayout from "../../components/root-wrapper";
 import { graphql, Link } from "gatsby";
 import styled from "styled-components";
-import BlogCard from "../../components/blogCard";
+import BlogCard from "../../components/BlogCard/blogCard";
 
 const BlogIndex = ({ data }) => {
   const { group } = data.allMarkdownRemark;

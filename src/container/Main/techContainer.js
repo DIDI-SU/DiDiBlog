@@ -2,7 +2,7 @@ import * as React from "react";
 
 import styled, { useTheme, ThemeContext } from "styled-components";
 
-const MainBox = ({ children, title }) => {
+const TechContainer = ({ children, title }) => {
   const isBrowser = typeof window !== "undefined";
   const [isDarkTheme, setIsDarkTheme] = React.useState(
     isBrowser && localStorage.getItem("theme")
@@ -18,14 +18,16 @@ const MainBox = ({ children, title }) => {
       <MainContentTextContainerDiv>
         <MainContentCenterTitle>{title}</MainContentCenterTitle>
       </MainContentTextContainerDiv>
-      {children}
+      <MainContentCenterTechContainer>
+        {children}
+      </MainContentCenterTechContainer>
     </MainContentBox>
   );
 };
-
-export default MainBox;
+export default TechContainer;
 
 const MainContentBox = styled.section`
+  flex-grow: 1;
   padding: 20px 30px;
   background-color: ${({ theme, isDarkTheme, id }) =>
     isDarkTheme !== "dark" ? theme.BrightGreen : theme.Black[50]};
@@ -39,4 +41,14 @@ const MainContentTextContainerDiv = styled.div`
 
 const MainContentCenterTitle = styled.h2`
   font-size: 20px;
+`;
+const MainContentCenterTechContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
 `;

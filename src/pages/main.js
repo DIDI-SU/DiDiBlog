@@ -1,49 +1,19 @@
 import * as React from "react";
-import Card from "../components/card";
-import MainBox from "../components/mainBox";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import TechContainer from "../container/Main/techContainer";
+import Card from "../components/MainCard/card";
+import CONACT from "../data/contactList/contactList";
 import pofile from "../images/pic/KERO.jpg";
-import ICON_MAP from "../components/icon";
+import ICON_MAP from "../data/IconList/iconList";
+import PROJECT from "../data/ProjectList/projetcList";
 
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
 const TAG_NAME = [
   { id: 0, name: "전체" },
   { id: 1, name: "react" },
   { id: 2, name: "js" },
-];
-
-const PROJECT = [
-  {
-    id: 0,
-    name: "💚인스타그램 클론💚",
-    tech: ["all", "REACT"],
-    link: "https://hellojisoo.notion.site/b407b539ba8545f0a3f3f6a5aeee13b6",
-  },
-  {
-    id: 1,
-    name: "💚프로젝트 취하노💚",
-    tech: ["all", "REACT"],
-    link: "https://hellojisoo.notion.site/1-f8303c86cae340ed9e50081bc1cf5f6c",
-  },
-  {
-    id: 2,
-    name: "💚프로젝트 we eats💚",
-    tech: ["all", "REACT"],
-    link: "https://hellojisoo.notion.site/2-b82a793325944e2096d445d8c9d1372b",
-  },
-  {
-    id: 3,
-    name: "💚JS로 만드는 todo💚",
-    tech: ["all", "JS"],
-    link: "https://github.com/DIDI-SU/todojsch",
-  },
-  {
-    id: 4,
-    name: "(진행중)기술 면접 문제 은행",
-    tech: ["all", "REACT", "NEXT"],
-    link: "",
-  },
 ];
 
 const Main = () => {
@@ -72,14 +42,17 @@ const Main = () => {
   }, [isSelect]);
 
   return (
-    <MainArticle>
-      <MainContentTop>
-        <MainContentContainer>
+    <>
+      {" "}
+      <MainContentTop id="top">
+        <MainContentContainer id="img">
           <MainContentContainerImg alt="자고 있는 캐로피사진" src={pofile} />
         </MainContentContainer>
-        <MainContentContainer>
+        <MainContentContainer id="topText">
           <MainTitleContainer>
-            <MainContentTextContainerTitle>디디</MainContentTextContainerTitle>
+            <MainContentTextContainerTitle>
+              Hi🖐 I'm JISOO !
+            </MainContentTextContainerTitle>
           </MainTitleContainer>
           <MainTitleContainer>
             <MainTitleTopBox>
@@ -89,76 +62,51 @@ const Main = () => {
               <MainContentText>
                 어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
               </MainContentText>
+
               <DownLoadResume>이력서 확인하기</DownLoadResume>
-            </MainTitleTopBox>
-            <MainTitleTopBox>
-              <Ul>
-                <Li>
-                  <FontAwesomeIcon icon={ICON_MAP.get("email")} />
-                  <MainContentText>jisoodidi86@gmail.com</MainContentText>
-                </Li>
-                <Li>
-                  <FontAwesomeIcon icon={ICON_MAP.get("github")} />
-                  <MainContentText>https://github.com/DIDI-SU</MainContentText>
-                </Li>
-                <Li>
-                  <FontAwesomeIcon icon={ICON_MAP.get("letterV")} />
-                  <MainContentText>https://velog.io/@soojiv</MainContentText>
-                </Li>
-              </Ul>
             </MainTitleTopBox>
           </MainTitleContainer>
         </MainContentContainer>
+
+        <MainContentContainer>
+          <Ul>
+            {CONACT.map((list) => {
+              const { id, name, url } = list;
+              return (
+                <Li id={id} key={name}>
+                  <FontAwesomeIcon icon={ICON_MAP.get(name)} />
+                  <MainContentText>{url}</MainContentText>
+                </Li>
+              );
+            })}
+          </Ul>
+        </MainContentContainer>
       </MainContentTop>
       <MainContentTop>
-        <MainBox title="Skills " id="middle">
-          <MainContentCenterTechContainer>
-            {ICON_NAME.map((title) => {
-              return (
-                <MainContentCenterTechBox>
-                  <MainContentTechImg
-                    alt={title + "아이콘"}
-                    src={ICON_MAP.get(title)}
-                  />
-                </MainContentCenterTechBox>
-              );
-            })}
-          </MainContentCenterTechContainer>
-        </MainBox>
-        <MainBox title="Tools " id="middle">
-          <MainContentCenterTechContainer>
-            <MainContentCenterTechBox>
-              <MainContentTechImg alt="gitlogo" src={ICON_MAP.get("gitlogo")} />
-            </MainContentCenterTechBox>
-            <MainContentCenterTechBox>
-              <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
-            </MainContentCenterTechBox>
-          </MainContentCenterTechContainer>
-        </MainBox>
-      </MainContentTop>
+        <TechContainer title="Skills " id="middle">
+          {ICON_NAME.map((title) => {
+            return (
+              <MainContentCenterTechBox>
+                <MainContentTechImg
+                  alt={title + "아이콘"}
+                  src={ICON_MAP.get(title)}
+                />
+              </MainContentCenterTechBox>
+            );
+          })}
+        </TechContainer>
 
-      <MainBox title="프로젝트">
-        <MainContentTagContainer>
-          <MainContentTagSelector onChange={(e) => handleSelect(e)}>
-            {TAG_NAME.map((item) => {
-              const { id, name } = item;
-              return (
-                <MainContentTag id={id} key={id}>
-                  {name.toUpperCase()}
-                </MainContentTag>
-              );
-            })}
-          </MainContentTagSelector>
-        </MainContentTagContainer>
-        <MainCardBox>
-          {isLoading &&
-            projectList.map((item) => {
-              const { id, name, tech, link } = item;
-              return <Card id={id} name={name} tech={tech} link={link} />;
-            })}
-        </MainCardBox>
-      </MainBox>
-    </MainArticle>
+        <TechContainer title="Tools " id="middle">
+          <MainContentCenterTechBox>
+            <MainContentTechImg alt="gitlogo" src={ICON_MAP.get("gitlogo")} />
+          </MainContentCenterTechBox>
+          <MainContentCenterTechBox>
+            <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
+          </MainContentCenterTechBox>
+        </TechContainer>
+      </MainContentTop>
+      <TechContainer title="프로젝트"></TechContainer>
+    </>
   );
 };
 
@@ -166,18 +114,23 @@ export default Main;
 
 const MainContentTop = styled.section`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding-bottom: 20px;
+  margin-bottom: ${({ id }) => id === "top" && "18px"};
 `;
 
 const MainContentContainer = styled.div`
+  display: flex;
   padding-right: 20px;
+  flex-direction: column;
 `;
+
 const MainContentContainerImg = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 66%;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -207,6 +160,7 @@ const MainContentText = styled.p`
   align-items: center;
   padding-bottom: 8px;
   padding-right: 5px;
+  line-height: 100%;
 `;
 //연락 항목
 const Ul = styled.ul`
@@ -288,9 +242,7 @@ const MainCardBox = styled.section`
   flex-wrap: wrap;
 `;
 
-const MainArticle = styled.article`
-  max-width: 1100px;
-`;
+const MainArticle = styled.article``;
 
 const DownLoadResume = styled.button`
   border: 1px solid black;

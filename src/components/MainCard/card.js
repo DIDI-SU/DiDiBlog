@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import ICON_MAP from "./icon";
+import ICON_MAP from "../../data/IconList/iconList";
 
 const Card = ({ id, name, tech, link }) => {
   return (

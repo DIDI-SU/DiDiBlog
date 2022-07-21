@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Header from "./header";
+import Header from "./Header/header";
 import { light, dark } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/global-style";
@@ -50,7 +50,7 @@ export default GlobalLayout;
 
 //전체감싸주는 메인
 const MainWrapper = styled.main`
-  padding: 50px 0px;
+  padding: 30px 0px;
 `;
 
 const MainCenter = styled.article`

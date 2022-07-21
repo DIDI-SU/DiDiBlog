@@ -3,13 +3,13 @@ import { faTrello } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import Styled from "../assets/icon/styled.svg";
-import css from "../assets/icon/css.svg";
-import LogoReact from "../assets/icon/react.svg";
-import LogoHTML from "../assets/icon/html.svg";
-import LogoJS from "../assets/icon/js.svg";
-import Trello from "../assets/icon/Trello.svg";
-import Git from "../assets/icon/GitHub.svg";
+import Styled from "../../assets/icon/GitHub.svg";
+import css from "../../assets/icon/css.svg";
+import LogoReact from "../../assets/icon/react.svg";
+import LogoHTML from "../../assets/icon/html.svg";
+import LogoJS from "../../assets/icon/js.svg";
+import Trello from "../../assets/icon/Trello.svg";
+import Git from "../../assets/icon/GitHub.svg";
 
 const ICON = [
   { name: "react", value: LogoReact },

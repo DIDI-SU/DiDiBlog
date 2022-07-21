@@ -1,6 +1,6 @@
 import React from "react";
-import sun from "../images/Icon/sun.png";
-import moon from "../images/Icon/moon.png";
+import sun from "../../images/Icon/sun.png";
+import moon from "../../images/Icon/moon.png";
 import styled from "styled-components";
 
 const ICON = [
