@@ -1,6 +1,7 @@
 # 갯츠비와 함께하는 블로그 만들기
 
 ---
+
 ### ✅ 기술
 
 React, Styled-Component,Gatsby, GraphiQL
@@ -29,7 +30,10 @@ React, Styled-Component,Gatsby, GraphiQL
 
 [Gatsby블로그를 만들기! :DAY11(7/19) ](https://www.notion.so/Gatsby-DAY11-7-19-6cf0d48223c9451fa74b203d17dc8f97)
 
+[Gatsby블로그를 만들기! :DAY12-13(7/20-21) ](https://hellojisoo.notion.site/Gatsby-DAY12-13-7-20-21-4409c3d7314547db96f95751e5e304ee)
 
-### ✅ 현재 진행 하는 부분 
-- 미디어 쿼리 진행 중 
-- 이후 카테고리나 태그 기능 추가 예정 
+### ✅ 현재 진행 하는 부분
+
+- 미디어 쿼리 진행 중
+- 메인페이지 구조 및 css변경
+- 이후 카테고리나 태그 기능 추가 예정
