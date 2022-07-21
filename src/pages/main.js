@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -15,35 +15,28 @@ const TAG_NAME = [
   { id: 1, name: "react" },
   { id: 2, name: "js" },
 ];
+const TAB = [
+  { id: 1, name: "skills" },
+  { id: 2, name: "tools" },
+];
 
+const TOOLS = ["trello", "gitlogo"];
 const Main = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [projectList, setProjectList] = React.useState(null);
-  const [isSelect, setIsSelect] = React.useState("전체");
+  const [isLoading, setIsLoading] = useState(false);
+  const [projectList, setProjectList] = useState(null);
+  const [isSelect, setIsSelect] = useState({ id: "skills", choosen: true });
 
-  const handleSelect = (e) => {
-    setIsSelect(e.target.value);
-  };
-
-  const selectedFilter = () => {
-    if (isSelect === "전체") {
-      setProjectList(PROJECT);
-      setIsLoading(true);
+  const handleClick = (e) => {
+    const { id } = e.target;
+    if (id === isSelect.id) {
+      setIsSelect({ id: id, choosen: true });
     } else {
-      const copy = [...PROJECT];
-      const final = copy.filter((info) => info.tech.includes(isSelect));
-      setProjectList(final);
-      setIsLoading(true);
+      setIsSelect({ id: id, choosen: true });
     }
   };
 
-  React.useEffect(() => {
-    selectedFilter();
-  }, [isSelect]);
-
   return (
     <>
-      {" "}
       <MainContentTop id="top">
         <MainContentContainer id="img">
           <MainContentContainerImg alt="자고 있는 캐로피사진" src={pofile} />
@@ -82,30 +75,49 @@ const Main = () => {
           </Ul>
         </MainContentContainer>
       </MainContentTop>
-      <MainContentTop>
-        <TechContainer title="Skills " id="middle">
-          {ICON_NAME.map((title) => {
-            return (
-              <MainContentCenterTechBox>
-                <MainContentTechImg
-                  alt={title + "아이콘"}
-                  src={ICON_MAP.get(title)}
-                />
-              </MainContentCenterTechBox>
-            );
-          })}
+      <MainMiddle>
+        <MainMiniNav>
+          <MiniNavUl>
+            {TAB.map((list) => {
+              const { id, name } = list;
+              return (
+                <MiniNavLi
+                  key={id}
+                  isSelect={isSelect}
+                  onClick={(e) => handleClick(e)}
+                  id={name}
+                >
+                  {name.toUpperCase()}
+                </MiniNavLi>
+              );
+            })}
+          </MiniNavUl>
+        </MainMiniNav>
+        <TechContainer>
+          {isSelect.id === "skills"
+            ? ICON_NAME.map((title) => {
+                return (
+                  <MainContentCenterTechBox>
+                    <MainContentTechImg
+                      alt={title + "아이콘"}
+                      src={ICON_MAP.get(title)}
+                    />
+                  </MainContentCenterTechBox>
+                );
+              })
+            : TOOLS.map((title) => {
+                return (
+                  <MainContentCenterTechBox>
+                    <MainContentTechImg
+                      src={ICON_MAP.get(title)}
+                      alt={title + "아이콘"}
+                    />
+                  </MainContentCenterTechBox>
+                );
+              })}
         </TechContainer>
-
-        <TechContainer title="Tools " id="middle">
-          <MainContentCenterTechBox>
-            <MainContentTechImg alt="gitlogo" src={ICON_MAP.get("gitlogo")} />
-          </MainContentCenterTechBox>
-          <MainContentCenterTechBox>
-            <MainContentTechImg alt="trello" src={ICON_MAP.get("trello")} />
-          </MainContentCenterTechBox>
-        </TechContainer>
-      </MainContentTop>
-      <TechContainer title="프로젝트"></TechContainer>
+      </MainMiddle>
+      <MainBottom></MainBottom>
     </>
   );
 };
@@ -191,20 +203,39 @@ const Li = styled.li`
     }
   }
 `;
-//기술 항목이 들어갈 중단
 
-//이미지 들어갈 박스
-const MainContentCenterTechContainer = styled.div`
+const DownLoadResume = styled.button`
+  border: 1px solid black;
+  border-radius: 5px;
+`;
+const MainMiddle = styled.section``;
+
+const MainMiniNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-
-  @media screen and (max-width: 768px) {
-    padding: 10px;
-  }
 `;
 
+const MiniNavUl = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+`;
+
+const MiniNavLi = styled.li`
+  font-size: 25px;
+  font-weight: 600;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  border-bottom: ${({ theme, isSelect, id }) =>
+    isSelect.id === id && `2px solid ${theme.Green[50]}`};
+
+  :hover {
+    cursor: pointer;
+  }
+`;
 const MainContentCenterTechBox = styled.div`
   display: flex;
   align-items: center;
@@ -214,7 +245,6 @@ const MainContentCenterTechBox = styled.div`
     flex-wrap: wrap;
   }
 `;
-
 const MainContentTechImg = styled.img`
   width: 60px;
   height: 60px;
@@ -227,24 +257,5 @@ const MainContentTechImg = styled.img`
     height: 45px;
   }
 `;
-const MainContentTagContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
 
-const MainContentTagSelector = styled.select``;
-
-const MainContentTag = styled.option``;
-
-const MainCardBox = styled.section`
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-`;
-
-const MainArticle = styled.article``;
-
-const DownLoadResume = styled.button`
-  border: 1px solid black;
-  border-radius: 5px;
-`;
+const MainBottom = styled.section``;

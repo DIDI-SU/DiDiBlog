@@ -35,7 +35,12 @@ export default BlogCard;
 
 const Card = styled.section`
   padding: 10px 0px;
+
   border-bottom: 1px solid black;
+
+  :hover {
+    background-color: ${({ theme }) => theme.BrightGreen};
+  }
 `;
 
 const Title = styled.h2`

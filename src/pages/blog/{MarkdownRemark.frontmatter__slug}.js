@@ -91,4 +91,17 @@ const PostSection = styled.section`
   @media screen and (max-width: 768px) {
     padding: 10px;
   }
+
+  table {
+    border: 1px solid black;
+    border-radius: 4px;
+  }
+  tr {
+    border: 1px solid black;
+  }
+  td {
+    border: 1px solid black;
+    padding: 3px 0px;
+    text-align: center;
+  }
 `;

@@ -2,7 +2,7 @@ import * as React from "react";
 
 import styled, { useTheme, ThemeContext } from "styled-components";
 
-const TechContainer = ({ children, title }) => {
+const TechContainer = ({ children }) => {
   const isBrowser = typeof window !== "undefined";
   const [isDarkTheme, setIsDarkTheme] = React.useState(
     isBrowser && localStorage.getItem("theme")
@@ -15,9 +15,6 @@ const TechContainer = ({ children, title }) => {
 
   return (
     <MainContentBox isDarkTheme={isDarkTheme}>
-      <MainContentTextContainerDiv>
-        <MainContentCenterTitle>{title}</MainContentCenterTitle>
-      </MainContentTextContainerDiv>
       <MainContentCenterTechContainer>
         {children}
       </MainContentCenterTechContainer>

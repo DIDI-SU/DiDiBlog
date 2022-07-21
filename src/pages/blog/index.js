@@ -12,7 +12,7 @@ const BlogIndex = ({ data }) => {
     <GlobalLayout>
       <BlogTop>
         <BlogTitleBox>
-          <BlogTitle>기록장</BlogTitle>
+          <BlogTitle>📕 기록장</BlogTitle>
         </BlogTitleBox>
       </BlogTop>
       <BlogTagList>
@@ -38,11 +38,11 @@ const BlogIndex = ({ data }) => {
       <BlogList>
         {postList &&
           postList.map((item) => {
-            const { frontmatter } = item;
+            const { frontmatter, html } = item;
 
             return (
               <Link to={"/blog/" + frontmatter.slug}>
-                <BlogCard frontmatter={frontmatter} html={item.html} />
+                <BlogCard frontmatter={frontmatter} html={html} />
               </Link>
             );
           })}
