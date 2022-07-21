@@ -229,8 +229,8 @@ const MiniNavLi = styled.li`
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 20px;
-  border-bottom: ${({ theme, isSelect, id }) =>
-    isSelect.id === id && `2px solid ${theme.Green[50]}`};
+  border-bottom: ${({ isSelect, id }) =>
+    isSelect.id === id && `2px solid black`};
 
   :hover {
     cursor: pointer;
