@@ -32,6 +32,8 @@ React, Styled-Component,Gatsby, GraphiQL
 
 [Gatsby블로그를 만들기! :DAY12-13(7/20-21) ](https://hellojisoo.notion.site/Gatsby-DAY12-13-7-20-21-4409c3d7314547db96f95751e5e304ee)
 
+[Gatsby블로그를 만들기! :DAY14(7/22)](https://hellojisoo.notion.site/Gatsby-DAY14-087f11e9b39d46be964a43f296d519f6)
+
 ### ✅ 현재 진행 하는 부분
 
 - 미디어 쿼리 진행 중
