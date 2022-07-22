@@ -106,7 +106,6 @@ export const pageQuery = graphql`
           tags
           date
         }
-        html
       }
       group(field: frontmatter___tags) {
         tag: fieldValue

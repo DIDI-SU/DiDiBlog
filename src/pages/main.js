@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { graphql, Link } from "gatsby";
 
 import TechContainer from "../container/Main/techContainer";
 import Card from "../components/MainCard/card";
@@ -18,6 +19,8 @@ const TAG_NAME = [
 const TAB = [
   { id: 1, name: "skills" },
   { id: 2, name: "tools" },
+  { id: 3, name: "project" },
+  { id: 4, name: "Post" },
 ];
 
 const TOOLS = ["trello", "gitlogo"];
@@ -55,7 +58,6 @@ const Main = () => {
               <MainContentText>
                 어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
               </MainContentText>
-
               <DownLoadResume>이력서 확인하기</DownLoadResume>
             </MainTitleTopBox>
           </MainTitleContainer>
@@ -117,7 +119,6 @@ const Main = () => {
               })}
         </TechContainer>
       </MainMiddle>
-      <MainBottom></MainBottom>
     </>
   );
 };
@@ -251,7 +252,6 @@ const MainContentTechImg = styled.img`
   margin: 6px;
   padding: 5px;
   background-color: white;
-  border-radius: 50%;
   @media screen and (max-width: 768px) {
     width: 45px;
     height: 45px;
@@ -259,3 +259,13 @@ const MainContentTechImg = styled.img`
 `;
 
 const MainBottom = styled.section``;
+
+const MainBottomTitleBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const MainBottomTitle = styled.h2`
+  font-size: 25px;
+  font-weight: 600;
+`;

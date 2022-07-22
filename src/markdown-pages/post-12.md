@@ -3,6 +3,9 @@ slug: "javascripts-12"
 date: "2022-06-20"
 title: "모던 자바스크립트 딥다이브 CH12"
 tags: ["JavaScript", "ALL"]
+featuredimage:
+  src: "../images/thumbnail/JM.png"
+  alt: "모던자바스크립트"
 ---
 
 # #12

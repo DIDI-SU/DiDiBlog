@@ -3,6 +3,9 @@ slug: "javascripts-1920"
 date: "2022-07-13"
 title: "모던 자바스크립트 딥다이브 CH20"
 tags: ["JavaScript", "ALL"]
+featuredimage:
+  src: "../images/thumbnail/JM.png"
+  alt: "모던자바스크립트"
 ---
 
 # Stric Mode

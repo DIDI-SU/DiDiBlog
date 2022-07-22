@@ -3,6 +3,8 @@ import { window, document } from "browser-monads";
 import GlobalLayout from "../../components/root-wrapper";
 import sanitizeHtml from "sanitize-html";
 import { graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
 import styled from "styled-components";
 const Posts = ({ data }) => {
   const pre = document.getElementsByTagName("pre");
@@ -10,7 +12,8 @@ const Posts = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   const Html = sanitizeHtml(html);
-
+  const { alt, src } = frontmatter.featuredimage;
+  const image = getImage(src);
   useEffect(() => {
     const lengths = addClass.length;
     const preLength = pre.length;
@@ -28,7 +31,7 @@ const Posts = ({ data }) => {
         <Title>{frontmatter.title}</Title>
         <PostDate>{frontmatter.date}</PostDate>
       </TitleSection>
-
+      <GatsbyImage image={image} alt={alt} />
       <PostSection dangerouslySetInnerHTML={{ __html: Html }} />
     </GlobalLayout>
   );
@@ -44,6 +47,14 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        featuredimage {
+          alt
+          src {
+            childImageSharp {
+              gatsbyImageData(width: 768, height: 400)
+            }
+          }
+        }
       }
     }
   }
@@ -70,7 +81,6 @@ const PostDate = styled.p`
 `;
 
 const PostSection = styled.section`
-  border-top: 1px solid;
   padding: 10px 0px;
   line-height: 150%;
   h2 {

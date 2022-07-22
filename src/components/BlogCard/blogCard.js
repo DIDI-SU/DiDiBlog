@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import sanitizeHtml from "sanitize-html";
 const BlogCard = ({ frontmatter, html }) => {
-  const { title, date, tags } = frontmatter;
+  const { title, date, tags, featuredimage } = frontmatter;
   const fullHtml = sanitizeHtml(html);
   const finalHtml = fullHtml.replace(/<[^>]+>/g, "");
 
