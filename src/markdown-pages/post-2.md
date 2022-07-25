@@ -3,6 +3,9 @@ slug: "my-second-post"
 date: "2022-06-30"
 title: "Gatsby 블로그 만들기 :DAY01"
 tags: ["React", "Gatsby", "Styled-Component", "ALL"]
+featuredimage:
+  src: "../images/thumbnail/Gatsby.png"
+  alt: "갯츠비로고"
 ---
 
 > 이전에 만들었던 갯츠비 블로그를 조금 더 좋은 방향으로 만들고자 진행하게 되었습니다

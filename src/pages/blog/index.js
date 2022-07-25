@@ -3,7 +3,6 @@ import GlobalLayout from "../../components/root-wrapper";
 import { graphql, Link } from "gatsby";
 import styled from "styled-components";
 import BlogCard from "../../components/BlogCard/blogCard";
-
 const BlogIndex = ({ data }) => {
   const { group } = data.allMarkdownRemark;
   const postList = data.allMarkdownRemark.nodes;
@@ -98,14 +97,26 @@ const BlogTagText = styled.p`
 
 export const pageQuery = graphql`
   {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 10
+    ) {
       nodes {
         frontmatter {
           slug
           title
           tags
           date
+          featuredimage {
+            src {
+              childImageSharp {
+                gatsbyImageData(height: 200, width: 200)
+              }
+            }
+            alt
+          }
         }
+        html
       }
       group(field: frontmatter___tags) {
         tag: fieldValue

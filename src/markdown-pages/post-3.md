@@ -3,6 +3,9 @@ slug: "my-third-post"
 date: "2022-07-04"
 title: "React & Next"
 tags: ["React", "Next", "ALL"]
+featuredimage:
+  src: "../images/thumbnail/Gatsby.png"
+  alt: "갯츠비로고"
 ---
 
 <aside>

@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql, Link } from "gatsby";
-
-import TechContainer from "../container/Main/techContainer";
+import MainTab from "../container/Main/MainTab/MainTab";
 import Card from "../components/MainCard/card";
 import CONACT from "../data/contactList/contactList";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../data/IconList/iconList";
 import PROJECT from "../data/ProjectList/projetcList";
-
+import BlogCard from "../components/BlogCard/blogCard";
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
 const TAG_NAME = [
   { id: 0, name: "전체" },
@@ -24,9 +23,7 @@ const TAB = [
 ];
 
 const TOOLS = ["trello", "gitlogo"];
-const Main = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [projectList, setProjectList] = useState(null);
+const Main = ({ data }) => {
   const [isSelect, setIsSelect] = useState({ id: "skills", choosen: true });
 
   const handleClick = (e) => {
@@ -62,7 +59,6 @@ const Main = () => {
             </MainTitleTopBox>
           </MainTitleContainer>
         </MainContentContainer>
-
         <MainContentContainer>
           <Ul>
             {CONACT.map((list) => {
@@ -95,29 +91,7 @@ const Main = () => {
             })}
           </MiniNavUl>
         </MainMiniNav>
-        <TechContainer>
-          {isSelect.id === "skills"
-            ? ICON_NAME.map((title) => {
-                return (
-                  <MainContentCenterTechBox>
-                    <MainContentTechImg
-                      alt={title + "아이콘"}
-                      src={ICON_MAP.get(title)}
-                    />
-                  </MainContentCenterTechBox>
-                );
-              })
-            : TOOLS.map((title) => {
-                return (
-                  <MainContentCenterTechBox>
-                    <MainContentTechImg
-                      src={ICON_MAP.get(title)}
-                      alt={title + "아이콘"}
-                    />
-                  </MainContentCenterTechBox>
-                );
-              })}
-        </TechContainer>
+        <MainTab title={isSelect.id} />
       </MainMiddle>
     </>
   );
@@ -237,35 +211,34 @@ const MiniNavLi = styled.li`
     cursor: pointer;
   }
 `;
-const MainContentCenterTechBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  @media screen and (max-width: 768px) {
-    flex-wrap: wrap;
-  }
-`;
-const MainContentTechImg = styled.img`
-  width: 60px;
-  height: 60px;
-  margin: 6px;
-  padding: 5px;
-  background-color: white;
-  @media screen and (max-width: 768px) {
-    width: 45px;
-    height: 45px;
-  }
-`;
 
-const MainBottom = styled.section``;
-
-const MainBottomTitleBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const MainBottomTitle = styled.h2`
-  font-size: 25px;
-  font-weight: 600;
+export const pageQuery = graphql`
+  {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 5
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          title
+          tags
+          date
+          featuredimage {
+            src {
+              childImageSharp {
+                gatsbyImageData(height: 200, width: 200)
+              }
+            }
+            alt
+          }
+        }
+        html
+      }
+      group(field: frontmatter___tags) {
+        tag: fieldValue
+        totalCount
+      }
+    }
+  }
 `;

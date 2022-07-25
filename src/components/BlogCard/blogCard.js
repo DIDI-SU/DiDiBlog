@@ -1,15 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import sanitizeHtml from "sanitize-html";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
 const BlogCard = ({ frontmatter, html }) => {
   const { title, date, tags, featuredimage } = frontmatter;
+  const { src, alt } = featuredimage;
+  const images = getImage(src);
   const fullHtml = sanitizeHtml(html);
   const finalHtml = fullHtml.replace(/<[^>]+>/g, "");
 
   return (
     <Card>
       <TitleDiv>
-        <Title>{title}</Title>
+        <div>
+          <Title>{title}</Title>
+        </div>
         <BlogTagList>
           <BlogTagUl>
             {tags.map((item) => (
@@ -20,9 +26,11 @@ const BlogCard = ({ frontmatter, html }) => {
           </BlogTagUl>
         </BlogTagList>
       </TitleDiv>
-
       <Post>
-        <PostSummary dangerouslySetInnerHTML={{ __html: finalHtml }} />
+        <PostSummary
+          dangerouslySetInnerHTML={{ __html: finalHtml.substring(0, 500) }}
+        />
+        <GatsbyImage image={images} alt={alt} />
       </Post>
       <DateDiv>
         <p>{date}</p>
@@ -39,7 +47,7 @@ const Card = styled.section`
   border-bottom: 1px solid black;
 
   :hover {
-    background-color: ${({ theme }) => theme.BrightGreen};
+    cursor: pointer;
   }
 `;
 
@@ -72,25 +80,26 @@ const BlogTagText = styled.p`
 `;
 const DateDiv = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  padding: 6px 0px;
 `;
 
 const Post = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   @media screen and (max-width: 768px) {
     padding: 10px 0px;
   }
 `;
 
 const PostSummary = styled.div`
-  max-width: 800px;
+  max-width: 700px;
   padding: 0;
+  line-height: 150%;
   overflow: hidden;
   position: relative;
   display: inline-block;
   text-overflow: ellipsis;
-  white-space: nowrap;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+  white-space: wrap;
 `;
