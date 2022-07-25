@@ -1,9 +1,11 @@
 import * as React from "react";
+import useUsersPosts from "../../hook/useUsersPosts/useUsersPosts";
 import GlobalLayout from "../../components/root-wrapper";
 import { graphql, Link } from "gatsby";
 import styled from "styled-components";
 import BlogCard from "../../components/BlogCard/blogCard";
-const BlogIndex = ({ data }) => {
+const BlogIndex = () => {
+  const { data } = useUsersPosts(pageQuery);
   const { group } = data.allMarkdownRemark;
   const postList = data.allMarkdownRemark.nodes;
 

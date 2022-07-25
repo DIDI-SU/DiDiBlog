@@ -6,10 +6,12 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import styled from "styled-components";
-const Posts = ({ data }) => {
+import useUsersPosts from "../../hook/useUsersPosts/useUsersPosts";
+const Posts = () => {
+  const { PostsData } = useUsersPosts(pageQuery);
   const pre = document.getElementsByTagName("pre");
   const addClass = document.getElementsByTagName("code");
-  const { markdownRemark } = data;
+  const { markdownRemark } = PostsData;
   const { frontmatter, html } = markdownRemark;
   const Html = sanitizeHtml(html);
   const { alt, src } = frontmatter.featuredimage;

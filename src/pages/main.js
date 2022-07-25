@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import useUsersPosts from "../hook/useUsersPosts/useUsersPosts";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { graphql, Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import MainTab from "../container/Main/MainTab/MainTab";
 import Card from "../components/MainCard/card";
 import CONACT from "../data/contactList/contactList";
@@ -21,11 +22,41 @@ const TAB = [
   { id: 3, name: "project" },
   { id: 4, name: "Post" },
 ];
-
+const QUERY = graphql`
+  {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 5
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          title
+          tags
+          date
+          featuredimage {
+            src {
+              childImageSharp {
+                gatsbyImageData(height: 200, width: 200)
+              }
+            }
+            alt
+          }
+        }
+        html
+      }
+      group(field: frontmatter___tags) {
+        tag: fieldValue
+        totalCount
+      }
+    }
+  }
+`;
 const TOOLS = ["trello", "gitlogo"];
-const Main = ({ data }) => {
-  const [isSelect, setIsSelect] = useState({ id: "skills", choosen: true });
 
+const Main = () => {
+  const recentPost = useUsersPosts(QUERY);
+  const [isSelect, setIsSelect] = useState({ id: "skills", choosen: true });
   const handleClick = (e) => {
     const { id } = e.target;
     if (id === isSelect.id) {
@@ -209,36 +240,5 @@ const MiniNavLi = styled.li`
 
   :hover {
     cursor: pointer;
-  }
-`;
-
-export const pageQuery = graphql`
-  {
-    allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
-      limit: 5
-    ) {
-      nodes {
-        frontmatter {
-          slug
-          title
-          tags
-          date
-          featuredimage {
-            src {
-              childImageSharp {
-                gatsbyImageData(height: 200, width: 200)
-              }
-            }
-            alt
-          }
-        }
-        html
-      }
-      group(field: frontmatter___tags) {
-        tag: fieldValue
-        totalCount
-      }
-    }
   }
 `;
