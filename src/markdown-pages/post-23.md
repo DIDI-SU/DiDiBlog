@@ -1,5 +1,5 @@
 ---
-slug: "javascripts-22"
+slug: "/javascripts-22"
 date: "2022-07-18"
 title: "모던 자바스크립트 딥다이브 CH22"
 tags: ["JavaScript", "ALL"]

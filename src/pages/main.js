@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MainTab from "../container/Main/MainTab/MainTab";
-import PostList from "../components/PostList/PostList";
+import MainTab from "../components/MainTab/MainTab";
 import CONACT from "../data/contactList/contactList";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../data/IconList/iconList";
-import PROJECT from "../data/ProjectList/projetcList";
 
-const ICON_NAME = ["html5", "js", "css", "react", "styled"];
-const TAG_NAME = [
-  { id: 0, name: "전체" },
-  { id: 1, name: "react" },
-  { id: 2, name: "js" },
-];
 const TAB = [
   { id: 1, name: "skills" },
   { id: 2, name: "tools" },
@@ -90,7 +82,7 @@ const Main = () => {
             })}
           </MiniNavUl>
         </MainMiniNav>
-        <MainTab>{isSelect.id === "post" && <PostList />}</MainTab>
+        <MainTab title={isSelect.id} />
       </MainMiddle>
     </>
   );

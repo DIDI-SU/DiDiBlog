@@ -1,5 +1,5 @@
 ---
-slug: "my-second-post"
+slug: "/my-second-post"
 date: "2022-06-30"
 title: "Gatsby 블로그 만들기 :DAY01"
 tags: ["React", "Gatsby", "Styled-Component", "ALL"]

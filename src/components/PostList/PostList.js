@@ -5,7 +5,6 @@ import BlogCard from "../BlogCard/blogCard";
 
 const PostList = () => {
   const recentPosts = useStaticQuery(QUERY);
-  console.log(recentPosts);
   return (
     <Posts>
       {recentPosts.allMarkdownRemark.nodes.map((item) => {
@@ -22,7 +21,7 @@ const PostList = () => {
 
 export default PostList;
 
-const Posts = styled.article``;
+const Posts = styled.section``;
 
 const QUERY = graphql`
   {

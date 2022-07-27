@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { window, document } from "browser-monads";
+import { document } from "browser-monads";
 import GlobalLayout from "../../components/root-wrapper";
 import sanitizeHtml from "sanitize-html";
 import { graphql, useStaticQuery } from "gatsby";
