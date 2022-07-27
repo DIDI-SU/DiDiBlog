@@ -10,7 +10,7 @@ const PostList = () => {
       {recentPosts.allMarkdownRemark.nodes.map((item) => {
         const { frontmatter, html } = item;
         return (
-          <Link to={"/blog/" + frontmatter.slug}>
+          <Link to={"/blog" + frontmatter.slug}>
             <BlogCard frontmatter={frontmatter} html={html} />
           </Link>
         );

@@ -5,7 +5,7 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import BlogCard from "../../components/BlogCard/blogCard";
 const BlogIndex = () => {
-  const { data } = useStaticQuery(pageQuery);
+  const data = useStaticQuery(pageQuery);
   const { group } = data.allMarkdownRemark;
   const postList = data.allMarkdownRemark.nodes;
 
@@ -18,13 +18,14 @@ const BlogIndex = () => {
       </BlogTop>
       <BlogTagList>
         <BlogTagUl>
-          {group.map((item) => (
-            <BlogTagLi key={item.tag}>
-              <BlogTagText>
-                {item.tag}({item.totalCount})
-              </BlogTagText>
-            </BlogTagLi>
-          ))}
+          {group &&
+            group.map((item) => (
+              <BlogTagLi key={item.tag}>
+                <BlogTagText>
+                  {item.tag}({item.totalCount})
+                </BlogTagText>
+              </BlogTagLi>
+            ))}
         </BlogTagUl>
         <BlogFilter>
           {group.map((item) => {
@@ -42,7 +43,7 @@ const BlogIndex = () => {
             const { frontmatter, html } = item;
 
             return (
-              <Link to={"/blog/" + frontmatter.slug}>
+              <Link to={"/blog" + frontmatter.slug}>
                 <BlogCard frontmatter={frontmatter} html={html} />
               </Link>
             );
@@ -97,7 +98,7 @@ const BlogTagText = styled.p`
   border-radius: 8px;
 `;
 
-export const pageQuery = graphql`
+const pageQuery = graphql`
   {
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
