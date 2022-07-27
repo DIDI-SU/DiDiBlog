@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-const MainTab = ({ title }) => {
-  return <Conatiner></Conatiner>;
+
+const MainTab = ({ children }) => {
+  return <Conatiner>{children}</Conatiner>;
 };
 
 export default MainTab;

@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { window, document } from "browser-monads";
 import GlobalLayout from "../../components/root-wrapper";
 import sanitizeHtml from "sanitize-html";
-import { graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import styled from "styled-components";
-import useUsersPosts from "../../hook/useUsersPosts/useUsersPosts";
 const Posts = () => {
-  const { PostsData } = useUsersPosts(pageQuery);
+  const PostsData = useStaticQuery(pageQuery);
   const pre = document.getElementsByTagName("pre");
   const addClass = document.getElementsByTagName("code");
   const { markdownRemark } = PostsData;
@@ -41,7 +40,7 @@ const Posts = () => {
 
 export default Posts;
 
-export const pageQuery = graphql`
+const pageQuery = graphql`
   query ($id: String) {
     markdownRemark(id: { eq: $id }) {
       html

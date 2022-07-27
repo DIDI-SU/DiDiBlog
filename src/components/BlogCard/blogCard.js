@@ -49,6 +49,12 @@ const Card = styled.section`
   :hover {
     cursor: pointer;
   }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0px 20px;
+  }
 `;
 
 const Title = styled.h2`
@@ -90,6 +96,10 @@ const Post = styled.section`
   justify-content: space-between;
   @media screen and (max-width: 768px) {
     padding: 10px 0px;
+    img {
+      display: none;
+      height: 40px;
+    }
   }
 `;
 
@@ -102,4 +112,7 @@ const PostSummary = styled.div`
   display: inline-block;
   text-overflow: ellipsis;
   white-space: wrap;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;

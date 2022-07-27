@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import useUsersPosts from "../hook/useUsersPosts/useUsersPosts";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { graphql, Link, useStaticQuery } from "gatsby";
 import MainTab from "../container/Main/MainTab/MainTab";
-import Card from "../components/MainCard/card";
+import PostList from "../components/PostList/PostList";
 import CONACT from "../data/contactList/contactList";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../data/IconList/iconList";
 import PROJECT from "../data/ProjectList/projetcList";
-import BlogCard from "../components/BlogCard/blogCard";
+
 const ICON_NAME = ["html5", "js", "css", "react", "styled"];
 const TAG_NAME = [
   { id: 0, name: "전체" },
@@ -20,42 +18,12 @@ const TAB = [
   { id: 1, name: "skills" },
   { id: 2, name: "tools" },
   { id: 3, name: "project" },
-  { id: 4, name: "Post" },
+  { id: 4, name: "post" },
 ];
-const QUERY = graphql`
-  {
-    allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
-      limit: 5
-    ) {
-      nodes {
-        frontmatter {
-          slug
-          title
-          tags
-          date
-          featuredimage {
-            src {
-              childImageSharp {
-                gatsbyImageData(height: 200, width: 200)
-              }
-            }
-            alt
-          }
-        }
-        html
-      }
-      group(field: frontmatter___tags) {
-        tag: fieldValue
-        totalCount
-      }
-    }
-  }
-`;
+
 const TOOLS = ["trello", "gitlogo"];
 
 const Main = () => {
-  const recentPost = useUsersPosts(QUERY);
   const [isSelect, setIsSelect] = useState({ id: "skills", choosen: true });
   const handleClick = (e) => {
     const { id } = e.target;
@@ -122,7 +90,7 @@ const Main = () => {
             })}
           </MiniNavUl>
         </MainMiniNav>
-        <MainTab title={isSelect.id} />
+        <MainTab>{isSelect.id === "post" && <PostList />}</MainTab>
       </MainMiddle>
     </>
   );
