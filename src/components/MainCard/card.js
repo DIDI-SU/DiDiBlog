@@ -19,7 +19,7 @@ const Card = ({ id, name, tech, link }) => {
 export default Card;
 
 const CardDiv = styled.div`
-  width: 40%;
+  width: 50%;
   height: 190px;
   border-radius: 3px;
   margin: 10px;
@@ -36,6 +36,7 @@ const CardBottom = styled.div`
   bottom: 0px;
   background-color: white;
   border-radius: 0px 0px 3px 3px;
+  background-color: beige;
 `;
 const CardTitle = styled.span`
   font-size: 15px;

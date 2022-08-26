@@ -7,16 +7,16 @@ import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../data/IconList/iconList";
 
 const TAB = [
-  { id: 1, name: "skills" },
-  { id: 2, name: "tools" },
-  { id: 3, name: "project" },
-  { id: 4, name: "post" },
+  { id: 1, name: "post" },
+  { id: 2, name: "project" },
+  { id: 3, name: "skills" },
+  { id: 4, name: "tools" },
 ];
 
 const TOOLS = ["trello", "gitlogo"];
 
 const Main = () => {
-  const [isSelect, setIsSelect] = useState({ id: "skills", choosen: true });
+  const [isSelect, setIsSelect] = useState({ id: "post", choosen: true });
   const handleClick = (e) => {
     const { id } = e.target;
     if (id === isSelect.id) {
@@ -39,18 +39,16 @@ const Main = () => {
             </MainContentTextContainerTitle>
           </MainTitleContainer>
           <MainTitleContainer>
-            <MainTitleTopBox>
-              <MainContentText>
-                꾸준함을 노력하는 프론트엔드 개발자 디디입니다
-              </MainContentText>
-              <MainContentText>
-                어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
-              </MainContentText>
-              <DownLoadResume>이력서 확인하기</DownLoadResume>
-            </MainTitleTopBox>
+            <MainContentText>
+              꾸준함을 노력하는 프론트엔드 개발자 디디입니다
+            </MainContentText>
+            <MainContentText>
+              어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
+            </MainContentText>
+            <DownLoadResume>이력서 확인하기</DownLoadResume>
           </MainTitleContainer>
         </MainContentContainer>
-        <MainContentContainer>
+        <MainContentContainer id="contact">
           <Ul>
             {CONACT.map((list) => {
               const { id, name, url } = list;
@@ -96,12 +94,23 @@ const MainContentTop = styled.section`
   justify-content: center;
   padding-bottom: 20px;
   margin-bottom: ${({ id }) => id === "top" && "18px"};
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const MainContentContainer = styled.div`
   display: flex;
   padding-right: 20px;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    width: ${({ id }) => id === "contact" && "100%"};
+    padding: ${({ id }) => id === "contact" && "0px 15px"};
+    align-items: ${({ id }) => id === "contact" && "flex-end"};
+  }
 `;
 
 const MainContentContainerImg = styled.img`
@@ -116,22 +125,14 @@ const MainContentContainerImg = styled.img`
 
 const MainTitleContainer = styled.div`
   display: flex;
-  align-items: center;
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    :last-child {
-      align-items: flex-end;
-    }
-  }
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const MainContentTextContainerTitle = styled.h1`
   font-size: 30px;
   padding-bottom: 10px;
 `;
-
-const MainTitleTopBox = styled.div``;
 
 const MainContentText = styled.p`
   display: flex;
@@ -146,6 +147,7 @@ const Ul = styled.ul`
   flex-direction: column;
   border-left: 1px solid;
   padding-left: 6px;
+
   @media screen and (max-width: 768px) {
     flex-direction: row;
     margin: 5px 0px;

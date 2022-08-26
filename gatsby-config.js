@@ -8,7 +8,6 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-fontawesome-css",
 
     {
       resolve: `gatsby-plugin-styled-components`,

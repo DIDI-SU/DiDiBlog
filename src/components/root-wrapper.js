@@ -48,7 +48,6 @@ const GlobalLayout = ({ children }) => {
 
 export default GlobalLayout;
 
-//전체감싸주는 메인
 const MainWrapper = styled.main`
   padding: 30px 0px;
 `;
