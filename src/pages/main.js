@@ -5,6 +5,7 @@ import MainTab from "../components/MainTab/MainTab";
 import CONACT from "../data/contactList/contactList";
 import pofile from "../images/pic/KERO.jpg";
 import ICON_MAP from "../data/IconList/iconList";
+import { Link } from "gatsby";
 
 const TAB = [
   { id: 1, name: "post" },
@@ -45,7 +46,6 @@ const Main = () => {
             <MainContentText>
               어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
             </MainContentText>
-            <DownLoadResume>이력서 확인하기</DownLoadResume>
           </MainTitleContainer>
         </MainContentContainer>
         <MainContentContainer id="contact">
@@ -53,10 +53,12 @@ const Main = () => {
             {CONACT.map((list) => {
               const { id, name, url } = list;
               return (
-                <Li id={id} key={name}>
-                  <FontAwesomeIcon icon={ICON_MAP.get(name)} />
-                  <MainContentText>{url}</MainContentText>
-                </Li>
+                <Link to={url}>
+                  <Li id={id} key={name}>
+                    <FontAwesomeIcon icon={ICON_MAP.get(name)} />
+                    <MainContentText>{url}</MainContentText>
+                  </Li>
+                </Link>
               );
             })}
           </Ul>
@@ -65,8 +67,7 @@ const Main = () => {
       <MainMiddle>
         <MainMiniNav>
           <MiniNavUl>
-            {TAB.map((list) => {
-              const { id, name } = list;
+            {TAB.map(({ id, name }) => {
               return (
                 <MiniNavLi
                   key={id}
@@ -172,10 +173,6 @@ const Li = styled.li`
   }
 `;
 
-const DownLoadResume = styled.button`
-  border: 1px solid black;
-  border-radius: 5px;
-`;
 const MainMiddle = styled.section``;
 
 const MainMiniNav = styled.nav`

@@ -15,6 +15,7 @@ const Posts = () => {
   const Html = sanitizeHtml(html);
   const { alt, src } = frontmatter.featuredimage;
   const image = getImage(src);
+
   useEffect(() => {
     const lengths = addClass.length;
     const preLength = pre.length;

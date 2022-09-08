@@ -7,8 +7,7 @@ const PostList = () => {
   const recentPosts = useStaticQuery(QUERY);
   return (
     <Posts>
-      {recentPosts.allMarkdownRemark.nodes.map((item) => {
-        const { frontmatter, html } = item;
+      {recentPosts.allMarkdownRemark.nodes.map(({ frontmatter, html }) => {
         return (
           <Link to={"/blog" + frontmatter.slug}>
             <BlogCard frontmatter={frontmatter} html={html} />

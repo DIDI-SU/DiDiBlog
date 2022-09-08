@@ -19,19 +19,19 @@ const BlogIndex = () => {
       <BlogTagList>
         <BlogTagUl>
           {group &&
-            group.map((item) => (
-              <BlogTagLi key={item.tag}>
+            group.map(({ tag, totalCount }) => (
+              <BlogTagLi key={tag}>
                 <BlogTagText>
-                  {item.tag}({item.totalCount})
+                  {tag}({totalCount})
                 </BlogTagText>
               </BlogTagLi>
             ))}
         </BlogTagUl>
         <BlogFilter>
-          {group.map((item) => {
+          {group.map(({ tag, totalCount }) => {
             return (
-              <option key={item.tag}>
-                {item.tag}({item.totalCount})
+              <option key={tag}>
+                {tag}({totalCount})
               </option>
             );
           })}
@@ -39,9 +39,7 @@ const BlogIndex = () => {
       </BlogTagList>
       <BlogList>
         {postList &&
-          postList.map((item) => {
-            const { frontmatter, html } = item;
-
+          postList.map(({ frontmatter, html }) => {
             return (
               <Link to={"/blog" + frontmatter.slug}>
                 <BlogCard frontmatter={frontmatter} html={html} />
