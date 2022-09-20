@@ -1,4 +1,4 @@
-const SKILLSLIST = [
+const SKILLSTOOLS = [
   {
     id: 0,
     name: "JavaScript",
@@ -31,4 +31,4 @@ const SKILLSLIST = [
   },
 ];
 
-export default SKILLSLIST;
+export default SKILLSTOOLS;

@@ -13,8 +13,6 @@ const TAB = [
   { id: 3, name: "skills&tools" },
 ];
 
-const TOOLS = ["trello", "gitlogo"];
-
 const Main = () => {
   const [isSelect, setIsSelect] = useState({ id: "post", choosen: true });
   const handleClick = (e) => {
