@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PostList from "../PostList/PostList";
 import ProjectList from "../../container/ProjectList/ProjectList";
-import SkillsList from "../SkillsList/skillsList";
+import SkillsList from "../SkillsList/SkillsList";
 
 const MainTab = ({ title }) => {
   return (
