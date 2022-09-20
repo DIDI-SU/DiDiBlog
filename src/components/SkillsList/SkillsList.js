@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SKILLSLIST from "../../data/skillsList/skillList";
+import SKILLSLIST from "../../data/skillTools/skillTools";
 import SkillsCard from "../SkillsCard/SkillsCard";
 
 const SkillsList = () => {
