@@ -1,5 +1,5 @@
 ---
-slug: "my-fourth-post"
+slug: "/my-fourth-post"
 date: "2022-06-20"
 title: "모던 자바스크립트 딥다이브 CH06"
 tags: ["JavaScript", "ALL"]

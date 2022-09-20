@@ -5,11 +5,12 @@ import BlogCard from "../BlogCard/blogCard";
 
 const PostList = () => {
   const recentPosts = useStaticQuery(QUERY);
+
   return (
     <Posts>
       {recentPosts.allMarkdownRemark.nodes.map(({ frontmatter, html }) => {
         return (
-          <Link to={"/blog" + frontmatter.slug}>
+          <Link to={frontmatter.slug}>
             <BlogCard frontmatter={frontmatter} html={html} />
           </Link>
         );

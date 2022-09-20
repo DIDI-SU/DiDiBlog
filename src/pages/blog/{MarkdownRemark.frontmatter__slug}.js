@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { document } from "browser-monads";
 import GlobalLayout from "../../components/root-wrapper";
 import sanitizeHtml from "sanitize-html";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import styled from "styled-components";
-const Posts = () => {
-  const PostsData = useStaticQuery(pageQuery);
+const Template = ({ data }) => {
   const pre = document.getElementsByTagName("pre");
   const addClass = document.getElementsByTagName("code");
-  const { markdownRemark } = PostsData;
+  const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   const Html = sanitizeHtml(html);
   const { alt, src } = frontmatter.featuredimage;
@@ -39,11 +38,11 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default Template;
 
-const pageQuery = graphql`
-  query ($id: String) {
-    markdownRemark(id: { eq: $id }) {
+export const pageQuery = graphql`
+  query ($slug: String) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

@@ -10,8 +10,7 @@ import { Link } from "gatsby";
 const TAB = [
   { id: 1, name: "post" },
   { id: 2, name: "project" },
-  { id: 3, name: "skills" },
-  { id: 4, name: "tools" },
+  { id: 3, name: "skills&tools" },
 ];
 
 const TOOLS = ["trello", "gitlogo"];
@@ -51,9 +50,9 @@ const Main = () => {
         <MainContentContainer id="contact">
           <Ul>
             {CONACT.map((list) => {
-              const { id, name, url } = list;
+              const { id, name, url, link } = list;
               return (
-                <Link to={url}>
+                <Link to={link}>
                   <Li id={id} key={name}>
                     <FontAwesomeIcon icon={ICON_MAP.get(name)} />
                     <MainContentText>{url}</MainContentText>

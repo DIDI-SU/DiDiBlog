@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PROJECT from "../../data/projectList/projectList";
 import Card from "../../components/MainCard/card";
 import styled from "styled-components";

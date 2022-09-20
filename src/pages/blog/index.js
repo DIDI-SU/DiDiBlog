@@ -8,7 +8,7 @@ const BlogIndex = () => {
   const data = useStaticQuery(pageQuery);
   const { group } = data.allMarkdownRemark;
   const postList = data.allMarkdownRemark.nodes;
-
+  console.log(data);
   return (
     <GlobalLayout>
       <BlogTop>
@@ -41,7 +41,7 @@ const BlogIndex = () => {
         {postList &&
           postList.map(({ frontmatter, html }) => {
             return (
-              <Link to={"/blog" + frontmatter.slug}>
+              <Link to={frontmatter.slug}>
                 <BlogCard frontmatter={frontmatter} html={html} />
               </Link>
             );
