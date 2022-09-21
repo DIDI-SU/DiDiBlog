@@ -38,9 +38,6 @@ const Main = () => {
           </MainTitleContainer>
           <MainTitleContainer>
             <MainContentText>
-              꾸준함을 노력하는 프론트엔드 개발자 디디입니다
-            </MainContentText>
-            <MainContentText>
               어디에서라도, 긍정적인면을 발견하는 것을 좋아합니다😊
             </MainContentText>
           </MainTitleContainer>

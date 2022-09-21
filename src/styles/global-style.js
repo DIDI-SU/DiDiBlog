@@ -71,6 +71,8 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: black;
+    color: ${({ theme }) =>
+      theme === light ? theme.FontColor : theme.Background};
   }
   button {
     border: none;

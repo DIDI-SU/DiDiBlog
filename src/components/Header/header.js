@@ -11,8 +11,12 @@ const Header = ({ handleMode, themeMode, isDarkTheme }) => {
     <Headers isDarkTheme={isDarkTheme}>
       <HeaderNav>
         <HeaderTitleContainer>
-          <HeaderImg src={pofile} />
-          <HeaderTitle>디디가 타고 있어요</HeaderTitle>
+          <Link to="/">
+            <HeaderImg src={pofile} />
+          </Link>
+          <Link to="/">
+            <HeaderTitle>DIDI'S BLOG</HeaderTitle>
+          </Link>
         </HeaderTitleContainer>
         <HeaderUl>
           <HeaderLi>
@@ -43,12 +47,12 @@ const Header = ({ handleMode, themeMode, isDarkTheme }) => {
 export default Header;
 
 const Headers = styled.header`
-  background-color: ${({ theme, isDarkTheme }) =>
-    !isDarkTheme ? theme.Green[70] : theme.Black[50]};
   padding: 30px 50px;
+  margin: 10px 0px;
 
   @media screen and (max-width: 768px) {
     padding: 10px;
+    margin: 10px 20px;
   }
 `;
 
@@ -66,7 +70,10 @@ const HeaderImg = styled.img`
 `;
 const HeaderNav = styled.nav`
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  margin: 0px auto;
+  justify-content: space-between;
+  max-width: 900px;
 `;
 
 const HeaderTitle = styled.h1`

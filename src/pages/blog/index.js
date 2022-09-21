@@ -15,6 +15,16 @@ const BlogIndex = () => {
         <BlogTitleBox>
           <BlogTitle>📕 기록장</BlogTitle>
         </BlogTitleBox>
+        <BlogTitleBox>
+          <span>노션에 있던 글들을 조금씩 옮기고 있습니다.</span>
+          <span>
+            더 많은 글은{" "}
+            <a href="https://hellojisoo.notion.site/84cfca016b7d45a09496818ce1024f84">
+              여기
+            </a>
+            에 있어요!
+          </span>
+        </BlogTitleBox>
       </BlogTop>
       <BlogTagList>
         <BlogTagUl>
@@ -53,9 +63,33 @@ const BlogIndex = () => {
 
 export default BlogIndex;
 const BlogTop = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0px 10px;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
-const BlogTitleBox = styled.div``;
+const BlogTitleBox = styled.div`
+  margin: 8px 0px;
+  span {
+    margin: 8px 0px;
+    padding: 5px;
+    a {
+      font-weight: 800;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    span {
+      margin: 0px;
+    }
+  }
+`;
 const BlogTitle = styled.h2`
   font-size: 30px;
 `;

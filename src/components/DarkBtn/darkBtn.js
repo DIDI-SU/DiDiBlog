@@ -39,7 +39,8 @@ const BtnContainer = styled.div`
   justify-content: space-around;
   width: 90px;
   height: 40px;
-  background-color: ${({ theme }) => theme.Background};
+  background-color: ${({ theme, isDarkTheme }) =>
+    isDarkTheme ? theme.Background : theme.Black};
   border-radius: 80px;
   :hover {
     cursor: pointer;

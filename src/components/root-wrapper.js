@@ -56,5 +56,5 @@ const MainCenter = styled.article`
   display: flex;
   flex-direction: column;
   margin: 0px auto;
-  max-width: 1000px;
+  max-width: 900px;
 `;

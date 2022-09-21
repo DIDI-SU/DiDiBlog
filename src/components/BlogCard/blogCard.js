@@ -27,9 +27,7 @@ const BlogCard = ({ frontmatter, html }) => {
         </BlogTagList>
       </TitleDiv>
       <Post>
-        <PostSummary
-          dangerouslySetInnerHTML={{ __html: finalHtml.substring(0, 500) }}
-        />
+        <PostSummary dangerouslySetInnerHTML={{ __html: finalHtml }} />
         <GatsbyImage image={images} alt={alt} />
       </Post>
       <DateDiv>
@@ -105,13 +103,13 @@ const Post = styled.section`
 
 const PostSummary = styled.div`
   max-width: 700px;
-  padding: 0;
   line-height: 150%;
   overflow: hidden;
-  position: relative;
-  display: inline-block;
   text-overflow: ellipsis;
-  white-space: wrap;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
   @media screen and (max-width: 768px) {
     display: none;
   }
